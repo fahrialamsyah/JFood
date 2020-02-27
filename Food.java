@@ -10,56 +10,77 @@ public class Food
     // instance variables - replace the example below with your own
     private int id;
     private String name;
+    private Seller seller;
     private int price;
     private String category;
    
     /**
      * Constructor for objects of class Food
      */
-    public Food()
+    public Food(int id,String name, Seller seller, int price, String category )
     {
+        this.id = id;
+        this.name = "oke";
+        this.price = 0;
+        this.category = "oke";
         // initialise instance variables
         
     }
     
     public int getId()
     {
-        return 0;
+        return id;
     }
     
     public String getName()
     {
-        return "oke";
+        return name;
+    }
+    
+    public Seller getSeller()
+    {
+        return seller;
     }
     
     public int getPrice()
     {
-        return 0;
+        return price;
     }
     
     public String getCategory()
     {
-        return "oke";
+        return category;
     }
     
-    public static void setId(int id)
+    public void setId(int id)
+    {
+        this.id =id;
+    }
+    
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+    
+    public void setSeller(Seller seller)
+    {
+        this.seller = seller;
+    }
+    
+    public void setPrice(String setPrice)
+    {
+        this.price = price;
+    }
+    
+    public void setCategory(String category)
+    {
+        this.category = category;
+    }
+    
+    public void printData()
     {
         
     }
     
-    public static void setName(String name)
-    {
-    
-    }
-    
-    public static void setPrice(String setPrice)
-    {
-     
-    }
-    
-    public static void setCategory(String category)
-    {
-    
-    }
     
 }

@@ -8,79 +8,80 @@
 public class Customer
 {
     // instance variables - replace the example below with your own
-    private int x;
+    private int id;
     private String name;
     private String email;
     private String password;
-    private String JoinDate;
+    private String joinDate;
 
     /**
      * Constructor for objects of class Customer
      */
-    public Customer()
+    public Customer(int id, String name, String email, String password, String joinDate)
     {
-        // initialise instance variables
-        x = 0;
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.joinDate = joinDate;
+        // initialise instance variable
     }
     public int getId()
     {
         
-        return 0;
+        return id;
     }
     
     public String getName()
     {
         
-        return "oke";
+        return name;
+    }
+    
+    public String getEmail()
+    {
+       return email;
     }
     
     public String getPassword()
     {
         
-       return "oke"; 
+       return password; 
         
     }
     
     public String getJoinDate()
     {
-        return "oke";
+        return joinDate;
     }
     
-    public static void setId(int id)
+    public int setId(int id)
     {
-        
+        return id;
     }
     
-    public static void setName(String name)
+    public String setName(String name)
     {
-        
+        return name;
     }
     
-    public static void setEmail(String email)
+    public String setEmail(String email)
     {
-        
+        return email;
     }
     
-    public static void setPassword(String password)
+    public String setPassword(String password)
     {
-        
+        return password;
     }
    
-    public static void setJoinDate(String joindate)
+    public String setJoinDate(String joindate)
     {
-     
+        return joinDate;
     }
-    
-    
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
+   
+    public void printData()
     {
-        // put your code here
-        return x + y;
+        System.out.println(getName());
     }
 }

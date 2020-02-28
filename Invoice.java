@@ -136,11 +136,11 @@ public class Invoice
     }
     
     /**
-     * Print Data
+     * Print Data (Post Test No 2)
      */
     public void printData()
     {
-        
+        System.out.println(getTotalPrice());
     }
     
 }

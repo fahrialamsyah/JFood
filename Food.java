@@ -136,7 +136,7 @@ public class Food
     }
     
     /**
-     * Print Data
+     * Print Data (Untuk No 1 Post Test)
      */
     public void printData()
     {

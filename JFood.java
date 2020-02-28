@@ -2,8 +2,8 @@
 /**
  * Write a description of class JFood here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author (Fahri Alamsyah)
+ * @version (Post Test 28-02-2020)
  */
 public class JFood
 {
@@ -20,22 +20,18 @@ public class JFood
         Food food1 = new Food(10, "ayam goreng", seller1, 200, "indonesia");
         Customer customer1 = new Customer(1,"Faerrens","Faerrens234@gmail.com","1234","28 February 2020");
         Invoice invoice1 = new Invoice(1,2,"28 February 2020",customer1,42000);
-        Seller seller2 = new Seller(10,"Gilang", "Gilang12@gmail.com","5000000", location2);
         //melakukan access method printData() ke Class tertentu
-
-        seller1.printData(); 
-        location1.printData();
-        food1.printData();
-        customer1.printData();
-        invoice1.printData();
+        
+        //revisi PostTest Modul2
+        System.out.println(seller1.getName()); //Soal no 6
+        seller1.setName("gilang"); //Soal no 7
+        System.out.println(seller1.getName()); // Soal no 8
+        food1.printData(); //Soal no 9 
+        //Soal no 10 tinggal menggunakan terminal 
         // initialise instance variables
         
     }
     
-     public void printData()
-    {
-        System.out.println(getSeller());
-    }
         
     
 }

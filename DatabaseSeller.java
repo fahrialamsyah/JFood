@@ -8,34 +8,30 @@
 public class DatabaseSeller
 {
     // instance variables - replace the example below with your own
-    private String[] listSeller;
+    private static String[] listSeller;
 
     /**
      * Constructor for objects of class DatabaseSeller
      */
-    public DatabaseSeller()
-    {
-        // initialise instance variables
-    }
     
     
-    public boolean addSeller(Seller seller)
+    public static boolean addSeller(Seller seller)
     {
         return true;
     }
     
-    public boolean removeSeller(Seller seller)
+    public static boolean removeSeller(Seller seller)
     {
         return false;
     }
     
     
-    public void getSeller(Seller seller)
+    public static void getSeller(Seller seller)
     {
         
     }
     
-    public String[] getListSeller()
+    public static String[] getListSeller()
     {
         return listSeller;
     }

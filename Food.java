@@ -4,7 +4,7 @@
  * Class merupakan sebuah blueprint dari sebuah objek yang merepresentasikan konsep objek
  *
  * @author (Fahri Alamsyah)
- * @version (27-07-2020)
+ * @version (27-07-2020) dan 05 Maret 2020
  */
 public class Food
 {
@@ -19,7 +19,7 @@ public class Food
     private String name;
     private Seller seller;
     private int price;
-    private String category;
+    private FoodCategory category;
    
     /**
      * Constructor for objects of class Food
@@ -35,7 +35,7 @@ public class Food
      * @param total price menginisialisasikan input total harga baru
      */
     
-    public Food(int id,String name, Seller seller, int price, String category )
+    public Food(int id,String name, Seller seller, int price, FoodCategory category)
     {
         
         /**
@@ -45,6 +45,7 @@ public class Food
         this.name = name;
         this.price = price;
         this.category = category;
+        this.seller = seller;
         // initialise instance variables
         
     }
@@ -85,7 +86,7 @@ public class Food
     /** Getter Category for Food
     * @return Category untuk mengecek variabel Category ke variabel instance
     */
-    public String getCategory()
+    public FoodCategory getCategory()
     {
         return category;
     }
@@ -130,7 +131,7 @@ public class Food
      * Setter Category for food
      * @param Category untuk set ke instance variabel Category
      */
-    public void setCategory(String category)
+    public void setCategory(FoodCategory category)
     {
         this.category = category;
     }
@@ -140,7 +141,15 @@ public class Food
      */
     public void printData()
     {
-        System.out.println(getName());
+        System.out.println("=========FOOD==========");
+        System.out.println("ID : 1 "+ getId());
+        System.out.println("Name : " + getName());
+        System.out.println("Seller : " + getSeller().getName());
+        System.out.println("City : " + getSeller().getLocation().getCity());
+        System.out.println("Price : " + getPrice());
+        System.out.println("Category : " +getCategory());
+        
+        
     }
     
     

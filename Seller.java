@@ -88,9 +88,9 @@ public class Seller
      /**
      * Getter Location for Seller
      */
-    public void getLocation()
+    public Location getLocation()
     {
-        
+        return location;
     }
     
     /**

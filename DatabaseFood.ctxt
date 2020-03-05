@@ -1,15 +1,14 @@
 #BlueJ class context
 comment0.target=DatabaseFood
 comment0.text=\r\n\ Ini\ adalah\ Class\ Database\ Food\r\n\ Class\ merupakan\ sebuah\ blueprint\ dari\ sebuah\ objek\ yang\ merepresentasikan\ konsep\ objek\r\n\ @author\ (Fahri\ Alamsyah)\r\n\ @version\ (27-02-2020)\r\n
-comment1.params=
-comment1.target=DatabaseFood()
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ DatabaseFood\r\n
+comment1.params=food
+comment1.target=boolean\ addFood(Food)
+comment1.text=\r\n\ Hanya\ memiliki\ dua\ nilai\ valid\ yakni\ true\ dan\ false.\ \r\n\ Nilai\ boolean\ tidak\ dapat\ dikonversi\ menjadi\ tipe\ data\ lain,\r\n\ atau\ tipe\ data\ lain\ juga\ tidak\ dapat\ dikonversi\ menjadi\ sebuah\ \r\n\ nilai\ boolean.\ Kata\ True\ dan\ False\ merupakan\ kata\ kunci\ dalam\ Java\ sebagai\ literal\r\n\ Boolean\ dan\ tidak\ dapat\ digunakan\ diluar\ konteks\ ini.\r\n\ \r\n
 comment2.params=food
-comment2.target=boolean\ addFood(Food)
+comment2.target=boolean\ removeFood(Food)
 comment2.text=\r\n\ Hanya\ memiliki\ dua\ nilai\ valid\ yakni\ true\ dan\ false.\ \r\n\ Nilai\ boolean\ tidak\ dapat\ dikonversi\ menjadi\ tipe\ data\ lain,\r\n\ atau\ tipe\ data\ lain\ juga\ tidak\ dapat\ dikonversi\ menjadi\ sebuah\ \r\n\ nilai\ boolean.\ Kata\ True\ dan\ False\ merupakan\ kata\ kunci\ dalam\ Java\ sebagai\ literal\r\n\ Boolean\ dan\ tidak\ dapat\ digunakan\ diluar\ konteks\ ini.\r\n\ \r\n
 comment3.params=food
-comment3.target=boolean\ removeFood(Food)
-comment3.text=\r\n\ Hanya\ memiliki\ dua\ nilai\ valid\ yakni\ true\ dan\ false.\ \r\n\ Nilai\ boolean\ tidak\ dapat\ dikonversi\ menjadi\ tipe\ data\ lain,\r\n\ atau\ tipe\ data\ lain\ juga\ tidak\ dapat\ dikonversi\ menjadi\ sebuah\ \r\n\ nilai\ boolean.\ Kata\ True\ dan\ False\ merupakan\ kata\ kunci\ dalam\ Java\ sebagai\ literal\r\n\ Boolean\ dan\ tidak\ dapat\ digunakan\ diluar\ konteks\ ini.\r\n\ \r\n
+comment3.target=void\ getFood(Food)
 comment4.params=
 comment4.target=java.lang.String[]\ getListFood()
 comment4.text=\r\n\ Getter\ ListFood\ for\ DatabaseFood\r\n\ @return\ listfood\ untuk\ mengecek\ variabel\ listfood\ ke\ variabel\ instance\r\n

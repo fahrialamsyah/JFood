@@ -15,15 +15,12 @@ public class DatabaseFood
      * Modifier private hanya bisa diberikan kepada member class.
      */
     // instance variables - replace the example below with your own
-    private String[] listFood;
+    private static String[] listFood;
 
     /**
      * Constructor for objects of class DatabaseFood
      */
-    public DatabaseFood ()
-    {
-        // initialise instance variables
-    }
+    
     
     /**
      * Hanya memiliki dua nilai valid yakni true dan false. 
@@ -33,7 +30,7 @@ public class DatabaseFood
      * Boolean dan tidak dapat digunakan diluar konteks ini.
      * 
      */
-    public boolean addFood(Food food)
+    public static boolean addFood(Food food)
     {
         return true;
     }
@@ -46,16 +43,21 @@ public class DatabaseFood
      * Boolean dan tidak dapat digunakan diluar konteks ini.
      * 
      */
-    public boolean removeFood(Food food)
+    public static boolean removeFood(Food food)
     {
         return true;
+    }
+    
+    public static void getFood(Food food)
+    {
+        
     }
     
       /**
      * Getter ListFood for DatabaseFood
      * @return listfood untuk mengecek variabel listfood ke variabel instance
      */
-    public String[] getListFood()
+    public static String[] getListFood()
     {
         return listFood;
     }

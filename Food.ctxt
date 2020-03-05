@@ -1,14 +1,14 @@
 #BlueJ class context
 comment0.target=Food
-comment0.text=\r\n\ Ini\ adalah\ Class\ invoice\ yang\ terdiri\ dari\ id,\ name,\ seller,\ price,\ category.\r\n\ Class\ merupakan\ sebuah\ blueprint\ dari\ sebuah\ objek\ yang\ merepresentasikan\ konsep\ objek\r\n\r\n\ @author\ (Fahri\ Alamsyah)\r\n\ @version\ (27-07-2020)\r\n
+comment0.text=\r\n\ Ini\ adalah\ Class\ invoice\ yang\ terdiri\ dari\ id,\ name,\ seller,\ price,\ category.\r\n\ Class\ merupakan\ sebuah\ blueprint\ dari\ sebuah\ objek\ yang\ merepresentasikan\ konsep\ objek\r\n\r\n\ @author\ (Fahri\ Alamsyah)\r\n\ @version\ (27-07-2020)\ dan\ 05\ Maret\ 2020\r\n
 comment1.params=id\ name\ seller\ price\ category
-comment1.target=Food(int,\ java.lang.String,\ Seller,\ int,\ java.lang.String)
+comment1.target=Food(int,\ java.lang.String,\ Seller,\ int,\ FoodCategory)
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Food\r\n\ Constructor\ sama\ dengan\ metode\ yang\ dipanggil\ ketika\ sebuah\ objek\ di-instance.\r\n\ Nama\ konstruktor\ harus\ sama\ dengan\ nama\ class\ ,\ dan\ tidak\ dapat\ menghasilkan\ nilai\ balik\ \r\n\ dan\ tidak\ memiliki\ tipe\ nilai\ balik\ pada\ header\ metode.\r\n\ Modifier\ public\ akan\ membuat\ member\ dan\ class\ bisa\ di\ akses\ dari\ mana\ saja.\r\n\ \r\n\ @param\ id\ untuk\ menginisialisasikan\ input\ id\ baru\r\n\ @param\ idFood\ untuk\ menginisialisasikan\ input\ idFood\ baru\r\n\ @param\ date\ untuk\ menginisialisasikan\ input\ date\ baru\r\n\ @param\ customer\ untuk\ menginisialisasikan\ input\ customer\ baru\r\n\ @param\ total\ price\ menginisialisasikan\ input\ total\ harga\ baru\r\n
 comment10.params=setPrice
 comment10.target=void\ setPrice(java.lang.String)
 comment10.text=\r\n\ Setter\ Price\ for\ food\r\n\ @param\ Price\ untuk\ set\ ke\ instance\ variabel\ Price\r\n
 comment11.params=category
-comment11.target=void\ setCategory(java.lang.String)
+comment11.target=void\ setCategory(FoodCategory)
 comment11.text=\r\n\ Setter\ Category\ for\ food\r\n\ @param\ Category\ untuk\ set\ ke\ instance\ variabel\ Category\r\n
 comment12.params=
 comment12.target=void\ printData()
@@ -26,7 +26,7 @@ comment5.params=
 comment5.target=int\ getPrice()
 comment5.text=\ Getter\ Price\ for\ Food\r\n\ @return\ Price\ untuk\ mengecek\ variabel\ Price\ ke\ variabel\ instance\r\n
 comment6.params=
-comment6.target=java.lang.String\ getCategory()
+comment6.target=FoodCategory\ getCategory()
 comment6.text=\ Getter\ Category\ for\ Food\r\n\ @return\ Category\ untuk\ mengecek\ variabel\ Category\ ke\ variabel\ instance\r\n
 comment7.params=id
 comment7.target=void\ setId(int)

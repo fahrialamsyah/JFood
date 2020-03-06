@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=Invoice
 comment0.text=\r\n\ Ini\ adalah\ class\ invoice\ yang\ terdiri\ dari\ id,\ idFood,\ date,\ totalPrice,\ Customer\ sebagai\ atribut\r\n\ Class\ merupakan\ sebuah\ blueprint\ dari\ sebuah\ objek\ yang\ merepresentasikan\ konsep\ objek\r\n\r\n\ @author\ Fahri\ Alamsyah\r\n\ @version\ 27-02-2020\r\n
-comment1.params=id\ idFood\ date\ totalPrice\ paymentType\ status
-comment1.target=Invoice(int,\ int,\ java.lang.String,\ int,\ PaymentType,\ InvoiceStatus)
+comment1.params=id\ idFood\ date\ customer\ totalPrice\ status
+comment1.target=Invoice(int,\ int,\ java.lang.String,\ Customer,\ int,\ InvoiceStatus)
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Invoice\ \r\n\ Constructor\ sama\ dengan\ metode\ yang\ dipanggil\ ketika\ sebuah\ objek\ di-instance.\r\n\ Nama\ konstruktor\ harus\ sama\ dengan\ nama\ class\ ,\ dan\ tidak\ dapat\ menghasilkan\ nilai\ balik\ \r\n\ dan\ tidak\ memiliki\ tipe\ nilai\ balik\ pada\ header\ metode.\r\n\ Modifier\ public\ akan\ membuat\ member\ dan\ class\ bisa\ di\ akses\ dari\ mana\ saja.\r\n\ \r\n\ @param\ id\ untuk\ menginisialisasikan\ input\ id\ baru\r\n\ @param\ idFood\ untuk\ menginisialisasikan\ input\ idFood\ baru\r\n\ @param\ date\ untuk\ menginisialisasikan\ input\ date\ baru\r\n\ @param\ customer\ untuk\ menginisialisasikan\ input\ customer\ baru\r\n\ @param\ total\ price\ menginisialisasikan\ input\ total\ harga\ baru\r\n
 comment10.params=idFood
 comment10.target=void\ setIdFood(int)

@@ -36,14 +36,13 @@ public class Invoice
      * @param customer untuk menginisialisasikan input customer baru
      * @param total price menginisialisasikan input total harga baru
      */
-    public Invoice(int id, int idFood, String date, int totalPrice,PaymentType paymentType, InvoiceStatus status)
+    public Invoice(int id, int idFood, String date,Customer customer,int totalPrice, InvoiceStatus status)
     {
      this.id = id;
      this.idFood = idFood;
      this.date = date;
-     this.totalPrice = totalPrice;
      this.customer = customer;
-     this.paymentType = paymentType;
+     this.totalPrice = totalPrice;
      this.status = status;
      
     }
@@ -164,10 +163,11 @@ public class Invoice
     public void printData()
     {
         System.out.println("=========INVOICE==========");
-        System.out.println("ID : 1 "+ getId());
+        System.out.println("ID : "+ getId());
         System.out.println("Food ID : "+ getIdFood());
         System.out.println("Date : " + getDate());
         System.out.println("Customer : " + getCustomer().getName());
+        System.out.println("Price : " + getTotalPrice());
         System.out.println("Status :  " + getInvoiceStatus());
     }
     

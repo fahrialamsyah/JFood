@@ -4,9 +4,9 @@
  * Class merupakan sebuah blueprint dari sebuah objek yang merepresentasikan konsep objek
  *
  * @author Fahri Alamsyah
- * @version 27-02-2020
+ * @version 12-03-2020
  */
-public class Invoice
+public abstract class Invoice
 {
     /**
      * Bagian dari Variabel instances
@@ -16,12 +16,14 @@ public class Invoice
      * Modifier private hanya bisa diberikan kepada member class.
      */
     private int id;
-    private int idFood;
+    private Food food;
+    //private int idFood;
     private String date;
-    private int totalPrice;
-    private PaymentType paymentType;
+    protected int totalPrice;
+    //private int totalPrice;
+    //private PaymentType paymentType;
     private Customer customer;
-    private InvoiceStatus status;
+    private InvoiceStatus invoiceStatus;
 
     /**
      * Constructor for objects of class Invoice 
@@ -36,14 +38,13 @@ public class Invoice
      * @param customer untuk menginisialisasikan input customer baru
      * @param total price menginisialisasikan input total harga baru
      */
-    public Invoice(int id, int idFood, String date,Customer customer,int totalPrice, InvoiceStatus status)
+    public Invoice(int id, Food food, String date,Customer customer,InvoiceStatus invoiceStatus)
     {
      this.id = id;
-     this.idFood = idFood;
+     this.food = food;
      this.date = date;
      this.customer = customer;
-     this.totalPrice = totalPrice;
-     this.status = status;
+     this.invoiceStatus = invoiceStatus;
      
     }
     
@@ -60,9 +61,9 @@ public class Invoice
      * Getter idFood for invoice
      * @return idFood untuk mengecek variabel idFood ke variabel instance
      */
-    public int getIdFood()
+    public Food getFood()
     {
-      return idFood;
+      return food;
     }
     
     /**
@@ -92,15 +93,19 @@ public class Invoice
       return customer;
     }
     
-    public PaymentType getPaymentType()
-    {
-        return paymentType;
-    }
-    
     public InvoiceStatus getInvoiceStatus()
     {
-        return status;
+      return invoiceStatus;
     }
+    
+    public abstract PaymentType getPaymentType();
+    
+    
+    public void setInvoiceStatus(InvoiceStatus status)
+    {
+        this.invoiceStatus = invoiceStatus;
+    }
+   
     
     /**
      * Setter id for invoice
@@ -115,9 +120,9 @@ public class Invoice
      * Setter idFood for invoice
      * @param idFood untuk set ke instance variabel idFood
      */
-    public void setIdFood(int idFood)
+    public void setFood(Food food)
     {
-        this.idFood = idFood;
+        this.food = food;
     }
     
     /**
@@ -133,10 +138,7 @@ public class Invoice
      * Setter TotalPrice for Invoice
      * @param TotalPrice untuk set ke instance variabel TotalPrice
      */
-    public void setTotalPrice(int totalPrice)
-    {
-        this.totalPrice = totalPrice;
-    }
+    public abstract void setTotalPrice();
     
     /**
      * Setter Customer for Invoice
@@ -147,28 +149,10 @@ public class Invoice
         this.customer = customer;
     }
     
-    public void setPaymentType(PaymentType paymentType)
-    {
-       this.paymentType = paymentType;
-    }
-    
-     public void setInvoiceStatus(InvoiceStatus status)
-    {
-        this.status = status;
-    }
     
     /**
      * Print Data (Post Test No 2)
      */
-    public void printData()
-    {
-        System.out.println("=========INVOICE==========");
-        System.out.println("ID : "+ getId());
-        System.out.println("Food ID : "+ getIdFood());
-        System.out.println("Date : " + getDate());
-        System.out.println("Customer : " + getCustomer().getName());
-        System.out.println("Price : " + getTotalPrice());
-        System.out.println("Status :  " + getInvoiceStatus());
-    }
+    public abstract void printData();
     
 }

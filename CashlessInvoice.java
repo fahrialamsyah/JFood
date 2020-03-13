@@ -78,7 +78,7 @@ public class CashlessInvoice extends Invoice
         System.out.println("Payment Type: "+ getPaymentType());
         if(getPromo() != null && getPromo().getActive() == true && getFood().getPrice() > getPromo().getMinPrice())
          {
-             this.totalPrice = (getFood().getPrice()- getPromo().getDiscount());
+            System.out.println("Code :" +promo.getCode());
      
          }
         

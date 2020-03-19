@@ -1,4 +1,8 @@
+//Tambahan Modul 5 CS 19 Maret 2020
+import java.util.*;
 import java.util.GregorianCalendar;
+import java.util.Calendar;
+import java.text.SimpleDateFormat;
 /**
  * Ini adalah kelas JFood 
  *
@@ -21,8 +25,8 @@ public class JFood
         Food food2 = new Food(2, "babi kecap", seller1, 3000, FoodCategory.Snacks);
        // Object Customer Tugas 3
         GregorianCalendar joinDate = new GregorianCalendar(2020, 2, 12);
-        Customer customer1 = new Customer(1, "Fahri", "fahri@hotmail.com", "fahrisalasa1", joinDate);
-        Customer customer2 = new Customer(2, "Faerrens", "Faerrens@gmail.com", "fahriaa5", 2013 , 03, 20);
+        Customer customer1 = new Customer(1, "Fahri", "fahri@hotmail.com", "fah", joinDate);
+        Customer customer2 = new Customer(2, "Faerrens", "Faerrens@gmail.com", "fahrIaa5", 2013 , 03, 20);
         Customer customer3 = new Customer(3, "Faerrensiaa", "Faerrensiaa@gmail.com", "Fahri1234");
         // Print Object Customer 
         System.out.println(customer1.toString());
@@ -42,7 +46,7 @@ public class JFood
         CashlessInvoice invoice3 = new CashlessInvoice(3,food1, "30-02-2020", customer1, InvoiceStatus.Ongoing, promo2);
         //melakukan access method printData() ke Class tertentu
         //melakukan access method printData() ke Class tertentu
-        
+         
         //Post Test Modul 4
         CashInvoice cash1 = new CashInvoice(4, food1, "30-02-2020", customer1, InvoiceStatus.Finished);
         cash1.setTotalPrice();

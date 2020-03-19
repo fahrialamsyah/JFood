@@ -6,8 +6,10 @@
 */
 import java.util.*;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.text.SimpleDateFormat;
 
 
 public class Customer
@@ -20,6 +22,7 @@ public class Customer
     private Calendar joinDate;
     private Pattern pattern;
     private Matcher mathcer;
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy");
     
     
     /**
@@ -37,8 +40,6 @@ public class Customer
     {
         this.id = id;
         this.name = name;
-        this.email = email;
-        this.password = password;
         this.joinDate = joinDate;
         setPassword(password);
         setEmail(email);
@@ -59,8 +60,6 @@ public class Customer
     {
         this.id = id;
         this.name = name;
-        this.email = email;
-        this.password = password;
         this.joinDate = new GregorianCalendar(year, month, dayOfMonth);
         setPassword(password);
         setEmail(email);
@@ -81,8 +80,6 @@ public class Customer
     {
         this.id = id;
         this.name = name;
-        this.email = email;
-        this.password = password;
         setPassword(password);
         setEmail(email);
     }
@@ -212,12 +209,25 @@ public class Customer
     }
     
     public String toString(){
+        
+        SimpleDateFormat dateNow = this.dateFormat;
+        if (joinDate != null){
         return "=========Customer========\n" +
         "Id : " + getId() + "\n" +
         "Nama : " + getName() + "\n"+
         "Email : " + getEmail() + "\n"+
         "Password : " + getPassword() + "\n"+
-        "JoinDate : " + getJoinDate() + "\n";
+        "JoinDate : " + dateNow.format(joinDate.getTime());
+    }
+        else{
+            return "================Customer================\n" + 
+       "Id : " + getId() + "\n" +
+       "Nama : " + getName() + "\n" +
+       "Email : " + getEmail() + "\n" +
+       "Password : " + getPassword() + "\n";
+        }
+       
+       
     }
     
    

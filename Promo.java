@@ -126,4 +126,14 @@ public class Promo
         
     }
     
+    public String toString()
+    {
+        return "=========Food========\n" +
+        "Id : " + getId() + "\n" +
+        "Code : " + getCode() + "\n"+
+        "Discount : " + getDiscount() + "\n"+
+        "MinPrice: "  +  getMinPrice() + "\n"+
+        "ActiveStatus : " +  getActive() + "\n"+"\n"; 
+    }
+    
 }

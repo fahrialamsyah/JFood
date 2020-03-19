@@ -4,7 +4,7 @@
  * Class merupakan sebuah blueprint dari sebuah objek yang merepresentasikan konsep objek
  *
  * @author Fahri Alamsyah
- * @version 27-02-2020
+ * @version 27-02-2020 - 19-03-2020
  */
 public class Seller
 {
@@ -136,6 +136,15 @@ public class Seller
       public void setLocation(Location location)
     {
        this.location = location;
+    }
+    
+    public String toString()
+    {
+        return "=========Food========\n" +
+        "Id : " + getId() + "\n" +
+        "Nama : " + getName() + "\n"+
+        "Phone Number : " + getPhoneNumber() + "\n"+
+        "Location : "  +  getLocation() + "\n"+"\n"; 
     }
     
     /**

@@ -4,7 +4,7 @@
  * Class merupakan sebuah blueprint dari sebuah objek yang merepresentasikan konsep objek
  *
  * @author (Fahri Alamsyah)
- * @version (27-07-2020) dan 05 Maret 2020
+ * @version (27-07-2020) dan 05 Maret 2020 dan 19 Maret 2020
  */
 public class Food
 {
@@ -134,6 +134,17 @@ public class Food
     public void setCategory(FoodCategory category)
     {
         this.category = category;
+    }
+    
+     public String toString()
+    {
+        return "=========Food========\n" +
+        "Id : " + getId() + "\n" +
+        "Nama : " + getName() + "\n"+
+        "Seller : " + getSeller() + "\n"+
+        "City : "  +  getSeller().getLocation().getCity() + "\n"+
+        "Price : " +  getPrice() + "\n"+
+        "Category : " + getCategory() + "\n"; 
     }
     
     /**

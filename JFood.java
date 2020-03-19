@@ -1,9 +1,9 @@
-
+import java.util.GregorianCalendar;
 /**
  * Ini adalah kelas JFood 
  *
  * @author (Fahri Alamsyah)
- * @version (Modul 4 POST TEST 13-03-2020)
+ * @version (Modul 5 CS 19-03-2020)
  */
 public class JFood
 {
@@ -19,7 +19,21 @@ public class JFood
         Seller seller1 = new Seller(1706985943, "Fahri", "Fahrialamsyah231@gmail.com", "500000", location1);
         Food food1 = new Food(10, "ayam goreng", seller1, 20000, FoodCategory.Snacks);
         Food food2 = new Food(2, "babi kecap", seller1, 3000, FoodCategory.Snacks);
-        Customer customer1 = new Customer(1,"Faerrens","Faerrens234@gmail.com","1234","28 February 2020");
+       // Object Customer Tugas 3
+        GregorianCalendar joinDate = new GregorianCalendar(2020, 2, 12);
+        Customer customer1 = new Customer(1, "Fahri", "fahri@hotmail.com", "fahrisalasa1", joinDate);
+        Customer customer2 = new Customer(2, "Faerrens", "Faerrens@gmail.com", "fahriaa5", 2013 , 03, 20);
+        Customer customer3 = new Customer(3, "Faerrensiaa", "Faerrensiaa@gmail.com", "Fahri1234");
+        // Print Object Customer 
+        System.out.println(customer1.toString());
+        System.out.println(customer2.toString());
+        System.out.println(customer3.toString());
+        // Set Customer 1 Perubahan
+        customer1.setEmail("fahri123@hotmail.com");
+        customer1.setPassword("fahri12344");
+        // Print Kembali
+        System.out.println(customer1.toString());
+        
         Promo promo1 = new Promo(1,"01",2000,4000,true);
         Promo promo2 = new Promo(2,"02",2000,19000,true);
         //Invoice invoice1 = new Invoice(1,food1.getId(),"28 February 2020",customer1,20000,InvoiceStatus.Finished);
@@ -53,5 +67,10 @@ public class JFood
        
     
         
-    }   
+    }
+    
+     public String toString()
+    {
+        return null;
+    }
 }

@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Food
-comment0.text=\r\n\ Ini\ adalah\ Class\ invoice\ yang\ terdiri\ dari\ id,\ name,\ seller,\ price,\ category.\r\n\ Class\ merupakan\ sebuah\ blueprint\ dari\ sebuah\ objek\ yang\ merepresentasikan\ konsep\ objek\r\n\r\n\ @author\ (Fahri\ Alamsyah)\r\n\ @version\ (27-07-2020)\ dan\ 05\ Maret\ 2020\r\n
+comment0.text=\r\n\ Ini\ adalah\ Class\ invoice\ yang\ terdiri\ dari\ id,\ name,\ seller,\ price,\ category.\r\n\ Class\ merupakan\ sebuah\ blueprint\ dari\ sebuah\ objek\ yang\ merepresentasikan\ konsep\ objek\r\n\r\n\ @author\ (Fahri\ Alamsyah)\r\n\ @version\ (27-07-2020)\ dan\ 05\ Maret\ 2020\ dan\ 19\ Maret\ 2020\r\n
 comment1.params=id\ name\ seller\ price\ category
 comment1.target=Food(int,\ java.lang.String,\ Seller,\ int,\ FoodCategory)
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Food\r\n\ Constructor\ sama\ dengan\ metode\ yang\ dipanggil\ ketika\ sebuah\ objek\ di-instance.\r\n\ Nama\ konstruktor\ harus\ sama\ dengan\ nama\ class\ ,\ dan\ tidak\ dapat\ menghasilkan\ nilai\ balik\ \r\n\ dan\ tidak\ memiliki\ tipe\ nilai\ balik\ pada\ header\ metode.\r\n\ Modifier\ public\ akan\ membuat\ member\ dan\ class\ bisa\ di\ akses\ dari\ mana\ saja.\r\n\ \r\n\ @param\ id\ untuk\ menginisialisasikan\ input\ id\ baru\r\n\ @param\ idFood\ untuk\ menginisialisasikan\ input\ idFood\ baru\r\n\ @param\ date\ untuk\ menginisialisasikan\ input\ date\ baru\r\n\ @param\ customer\ untuk\ menginisialisasikan\ input\ customer\ baru\r\n\ @param\ total\ price\ menginisialisasikan\ input\ total\ harga\ baru\r\n
@@ -11,8 +11,10 @@ comment11.params=category
 comment11.target=void\ setCategory(FoodCategory)
 comment11.text=\r\n\ Setter\ Category\ for\ food\r\n\ @param\ Category\ untuk\ set\ ke\ instance\ variabel\ Category\r\n
 comment12.params=
-comment12.target=void\ printData()
-comment12.text=\r\n\ Print\ Data\ (Untuk\ No\ 1\ Post\ Test)\r\n
+comment12.target=java.lang.String\ toString()
+comment13.params=
+comment13.target=void\ printData()
+comment13.text=\r\n\ Print\ Data\ (Untuk\ No\ 1\ Post\ Test)\r\n
 comment2.params=
 comment2.target=int\ getId()
 comment2.text=\r\n\ Getter\ id\ for\ Food\r\n\ @return\ id\ untuk\ mengecek\ variabel\ id\ ke\ variabel\ instance\r\n
@@ -37,4 +39,4 @@ comment8.text=\r\n\ Setter\ Name\ for\ Food\r\n\ @param\ Name\ untuk\ set\ ke\ i
 comment9.params=seller
 comment9.target=void\ setSeller(Seller)
 comment9.text=\r\n\ Setter\ seller\ for\ food\r\n\ @param\ seller\ untuk\ set\ ke\ instance\ variabel\ seller\r\n
-numComments=13
+numComments=14

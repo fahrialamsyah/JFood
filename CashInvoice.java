@@ -1,3 +1,10 @@
+import java.util.*;
+import java.util.regex.*;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.text.SimpleDateFormat;
 /**
  * Ini adalah kelas CashInvoice
  *
@@ -14,8 +21,9 @@ public class CashInvoice extends Invoice
      * Modifier private tidak bisa diberikan kepada class, enum, dan interface. 
      * Modifier private hanya bisa diberikan kepada member class.
      */
-    private static PaymentType PAYMENT_TYPE = PaymentType.Cash;
-    private int deliveryFee;
+    private static final PaymentType PAYMENT_TYPE = PaymentType.Cash;
+    private int deliveryFee = 0;
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy");
  
 
     /**
@@ -79,14 +87,10 @@ public class CashInvoice extends Invoice
      */  
      public void setTotalPrice()
      {
-        if (deliveryFee == 0)
-        {
-             super.totalPrice = getFood().getPrice();
-            
-        }
-        else
-        {
-            super.totalPrice = getFood().getPrice() + deliveryFee;
+        if(deliveryFee != 0){
+            super.totalPrice = super.getFood().getPrice() + getDeliveryFee();
+        }else{
+            super.totalPrice = super.getFood().getPrice();
         }
     }
         
@@ -96,13 +100,14 @@ public class CashInvoice extends Invoice
      */
     public String toString()
     {
+        SimpleDateFormat dateNow = this.dateFormat;
         return "=========Invoice=========="+"\n"+
         "ID: "+ getId()+ "\n"+
         "Food ID: "+ getFood().getId()+ "\n" +
-        "Date: "+ getDate()+ "\n" +
+        "Date: "+ dateNow.format(super.getDate().getTime())+ "\n" +
         "Customer: "+ getCustomer().getName()+ "\n"+
         "Delivery Fee :" +getDeliveryFee()+ "\n"+
-        "TotalPrice: "+ totalPrice+ "\n" +
+        "TotalPrice: "+ super.totalPrice+ "\n" +
         "Status: "+ getInvoiceStatus()+ "\n" +
         "Payment Type: "+ getPaymentType()+ "\n";
     }

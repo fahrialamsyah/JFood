@@ -86,6 +86,11 @@ public class JFood
         cash2.setTotalPrice();
         cashless1.setTotalPrice();
         cashless2.setTotalPrice();
+        
+        System.out.println(cash1.toString());
+        System.out.println(cash2.toString());
+        System.out.println(cashless1.toString());
+        System.out.println(cashless2.toString());
         //ca.setTotalPrice();
         //CashInvoice cash2 = new CashInvoice(5, food1, "30-02-2020", customer1, InvoiceStatus.Finished, 10000);
         //cash2.setTotalPrice();

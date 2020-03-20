@@ -21,18 +21,18 @@ public class CashInvoice extends Invoice
     /**
      * Constructor for objects of class CashlessInvoice
      */
-    public CashInvoice(int id, Food food, String date,Customer customer,InvoiceStatus invoiceStatus)
+    public CashInvoice(int id, Food food,Customer customer,InvoiceStatus invoiceStatus)
     {
         //parameter id untuk deklarasi awalan 
         //parameter food untuk deklarasi awalan 
         //parameter date untuk deklarasi awalan 
         //parameter customer untuk deklarasi awalan 
         //parameter invoiceStatus untuk deklarasi awalan 
-        super(id, food, date, customer, invoiceStatus);
+        super(id, food, customer, invoiceStatus);
         
     }
     
-    public CashInvoice(int id, Food food, String date,Customer customer,InvoiceStatus invoiceStatus,int deliveryFee)
+    public CashInvoice(int id, Food food, Customer customer,InvoiceStatus invoiceStatus,int deliveryFee)
     {
         // initialise instance variables
         //parameter id untuk deklarasi awalan 
@@ -41,7 +41,7 @@ public class CashInvoice extends Invoice
         //parameter customer untuk deklarasi awalan 
         //parameter invoiceStatus untuk deklarasi awalan
         //parameter deliveryFee untuk deklarasi awalan 
-        super(id, food, date, customer, invoiceStatus);
+        super(id, food, customer, invoiceStatus);
         this.deliveryFee = deliveryFee;
         
     }
@@ -94,16 +94,16 @@ public class CashInvoice extends Invoice
     /**
      * Print Data (Post Test Modul 4)
      */
-    public void printData()
+    public String toString()
     {
-        System.out.println("=========Invoice==========");
-        System.out.println("ID: "+ getId());
-        System.out.println("Food ID: "+ getFood().getId());
-        System.out.println("Date: "+ getDate());
-        System.out.println("Customer: "+ getCustomer().getName());
-        System.out.println("Delivery Fee :" +getDeliveryFee());
-        System.out.println("TotalPrice: "+ totalPrice);
-        System.out.println("Status: "+ getInvoiceStatus());
-        System.out.println("Payment Type: "+ getPaymentType());
+        return "=========Invoice=========="+"\n"+
+        "ID: "+ getId()+ "\n"+
+        "Food ID: "+ getFood().getId()+ "\n" +
+        "Date: "+ getDate()+ "\n" +
+        "Customer: "+ getCustomer().getName()+ "\n"+
+        "Delivery Fee :" +getDeliveryFee()+ "\n"+
+        "TotalPrice: "+ totalPrice+ "\n" +
+        "Status: "+ getInvoiceStatus()+ "\n" +
+        "Payment Type: "+ getPaymentType()+ "\n";
     }
 }

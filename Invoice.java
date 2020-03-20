@@ -1,3 +1,9 @@
+import java.util.*;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.text.SimpleDateFormat;
 
 /**
  * Ini adalah class invoice yang terdiri dari id, idFood, date, totalPrice, Customer sebagai atribut
@@ -18,7 +24,7 @@ public abstract class Invoice
     private int id;
     private Food food;
     //private int idFood;
-    private String date;
+    private Calendar date;
     protected int totalPrice;
     //private int totalPrice;
     //private PaymentType paymentType;
@@ -38,11 +44,12 @@ public abstract class Invoice
      * @param customer untuk menginisialisasikan input customer baru
      * @param total price menginisialisasikan input total harga baru
      */
-    public Invoice(int id, Food food, String date,Customer customer,InvoiceStatus invoiceStatus)
+    public Invoice(int id, Food food,Customer customer,InvoiceStatus invoiceStatus)
     {
      this.id = id;
      this.food = food;
-     this.date = date;
+     Calendar now = Calendar.getInstance();
+     this.date = now;
      this.customer = customer;
      this.invoiceStatus = invoiceStatus;
      
@@ -70,7 +77,7 @@ public abstract class Invoice
      * Getter Date for invoice
      * @return Date untuk mengecek variabel Date ke variabel instance
      */
-    public String getDate()
+    public Calendar getDate()
     {
        return date;
     }
@@ -129,9 +136,14 @@ public abstract class Invoice
      * Setter Date for Invoice
      * @param Date untuk set ke instance variabel Date 
      */
-    public void setDate(String date)
+    public Calendar setDate(Calendar date)
     {
-        this.date = date;
+        return date ;
+    }
+    
+    public Calendar setDate(int year, int month, int dayOfMonth)
+    {
+        return date ;
     }
     
     /**
@@ -150,9 +162,9 @@ public abstract class Invoice
     }
     
     
-    /**
-     * Print Data (Post Test No 2)
-     */
-    public abstract void printData();
+    
+    public String toString(){
+        return null;
+    }
     
 }

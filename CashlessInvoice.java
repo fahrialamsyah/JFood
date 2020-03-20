@@ -14,17 +14,17 @@ public class CashlessInvoice extends Invoice
     /**
      * Constructor for objects of class CashlessInvoice
      */
-    public CashlessInvoice(int id, Food food, String date,Customer customer,InvoiceStatus invoiceStatus)
+    public CashlessInvoice(int id, Food food,Customer customer,InvoiceStatus invoiceStatus)
     {
         // initialise instance variables
-        super(id, food, date, customer, invoiceStatus);
+        super(id, food,customer, invoiceStatus);
         
     }
     
-    public CashlessInvoice(int id, Food food, String date,Customer customer,InvoiceStatus invoiceStatus, Promo promo)
+    public CashlessInvoice(int id, Food food,Customer customer,InvoiceStatus invoiceStatus, Promo promo)
     {
         // initialise instance variables
-        super(id, food, date, customer, invoiceStatus);
+        super(id, food, customer, invoiceStatus);
         this.promo = promo;
         
     }
@@ -66,22 +66,37 @@ public class CashlessInvoice extends Invoice
     /**
      * Print Data (Post Test No 2)
      */
-    public void printData()
+    public String toString()
     {
-        System.out.println("=========Invoice==========");
-        System.out.println("ID: "+ getId());
-        System.out.println("Food ID: "+ getFood().getId());
-        System.out.println("Date: "+ getDate());
-        System.out.println("Customer: "+ getCustomer().getName());
-        System.out.println("TotalPrice: "+ totalPrice);
-        System.out.println("Status: "+ getInvoiceStatus());
-        System.out.println("Payment Type: "+ getPaymentType());
-        if(getPromo() != null && getPromo().getActive() == true && getFood().getPrice() > getPromo().getMinPrice())
-         {
-            System.out.println("Code :" +promo.getCode());
-     
-         }
-        
+         if(promo != null && promo.getActive() == true && getFood().getPrice() >= promo.getMinPrice() ){         
+       return "================INVOICE================" +
+        "ID: " + super.getId()+
+        "Food: " + super.getFood().getName()+
+        //"Date: " + super.getDate()+
+        "Customer: " + getCustomer().getName()+
+        "Promo: " + promo.getCode()+
+        "Total Price: " + this.totalPrice + " Selamat Anda hemat " + promo.getDiscount() +
+        "Status: " + getInvoiceStatus() +
+        "Payment Type: " + getPaymentType();
+        }else if(promo != null && promo.getActive() == true && getFood().getPrice() < promo.getMinPrice() ){
+        return "================INVOICE================"+
+        "ID: " + super.getId()+ 
+        "Food: " + super.getFood().getName()+ 
+       // "Date: " + super.getDate()+
+        "Customer: " + getCustomer().getName()+
+        "Total Price: " + this.totalPrice + "(promo tidak dapat digunakan)"+
+        "Status: " + getInvoiceStatus()+
+        "Payment Type: " + getPaymentType();
+        }else{
+        return "================INVOICE================"+
+        "ID: " + super.getId()+
+        "Food: " + super.getFood().getName()+
+        "Date: " + super.getDate()+
+        "Customer: " + getCustomer().getName()+
+        "Total Price: " + this.totalPrice + "(Terdapat promo code, silahkan gunakan)"+
+        "Status: " + getInvoiceStatus()+
+        "Payment Type: " + getPaymentType();
+        }
        
     }
 }

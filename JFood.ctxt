@@ -1,9 +1,0 @@
-#BlueJ class context
-comment0.target=JFood
-comment0.text=\r\n\ Ini\ adalah\ kelas\ JFood\ \r\n\r\n\ @author\ (Fahri\ Alamsyah)\r\n\ @version\ (Modul\ 5\ CS\ 19-03-2020)\r\n
-comment1.params=args
-comment1.target=void\ main(java.lang.String[])
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ JFood\r\n\ locat\r\n
-comment2.params=
-comment2.target=java.lang.String\ toString()
-numComments=3

@@ -3,7 +3,7 @@
  * Enumeration class FoodCategory - write a description of the enum class here
  *
  * @author Fahri Alamsyah
- * @version 5 Maret 2020
+ * @version 02 - 04 - 2020
  */
 public enum FoodCategory
 {

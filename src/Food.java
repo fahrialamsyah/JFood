@@ -4,7 +4,7 @@
  * Class merupakan sebuah blueprint dari sebuah objek yang merepresentasikan konsep objek
  *
  * @author (Fahri Alamsyah)
- * @version (27-07-2020) dan 05 Maret 2020 dan 19 Maret 2020
+ * @version (27-07-2020) dan 05 Maret 2020 dan 19 Maret 2020 dan 04 - 2 - 2020
  */
 public class Food
 {

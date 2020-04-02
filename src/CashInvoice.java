@@ -1,114 +1,70 @@
-import java.util.*;
-import java.util.regex.*;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 /**
- * Ini adalah kelas CashInvoice
+ * Ini adalah Class CashInvoice
  *
  * @author Fahri Alamsyah
- * @version 12-03-2020 (Post Test Modul4)
+ * @version 02 - 04 - 2020
  */
-public class CashInvoice extends Invoice
-{
-    // instance variables - replace the example below with your own
-    /**
-     * Bagian dari Variabel instances
-     * Modifier private akan membuat member hanya bisa diakses oleh dari dalam class itu sendiri.
-     * Perlu diingat: 
-     * Modifier private tidak bisa diberikan kepada class, enum, dan interface. 
-     * Modifier private hanya bisa diberikan kepada member class.
-     */
-    private static final PaymentType PAYMENT_TYPE = PaymentType.Cash;
-    private int deliveryFee = 0;
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy");
- 
 
-    /**
-     * Constructor for objects of class CashlessInvoice
-     */
-    public CashInvoice(int id, Food food,Customer customer,InvoiceStatus invoiceStatus)
-    {
-        //parameter id untuk deklarasi awalan 
-        //parameter food untuk deklarasi awalan 
-        //parameter date untuk deklarasi awalan 
-        //parameter customer untuk deklarasi awalan 
-        //parameter invoiceStatus untuk deklarasi awalan 
-        super(id, food, customer, invoiceStatus);
-        
+public class CashInvoice extends Invoice {
+    private PaymentType PAYMENT_TYPE = PaymentType.Cash;
+    private int deliveryFee;
+    private int total = 0;
+    public CashInvoice(int id, ArrayList<Food> food, Customer customer, InvoiceStatus invoiceStatus) {
+        super(id, food, customer);
     }
-    
-    public CashInvoice(int id, Food food, Customer customer,InvoiceStatus invoiceStatus,int deliveryFee)
-    {
-        // initialise instance variables
-        //parameter id untuk deklarasi awalan 
-        //parameter food untuk deklarasi awalan 
-        //parameter date untuk deklarasi awalan 
-        //parameter customer untuk deklarasi awalan 
-        //parameter invoiceStatus untuk deklarasi awalan
-        //parameter deliveryFee untuk deklarasi awalan 
-        super(id, food, customer, invoiceStatus);
+
+    public CashInvoice(int id, ArrayList<Food> food, Customer customer, InvoiceStatus invoiceStatus, int deliveryFee){
+        super(id, food, customer);
         this.deliveryFee = deliveryFee;
-        
     }
-    
-    /**
-     * Getter PAYMENT_TYPE for Cash Invoice
-     * @return PAYMENT_TYPE untuk mengecek variabel PAYMENT_TYPE ke variabel instance
-     */
-     public PaymentType getPaymentType()
-    {
-        return PAYMENT_TYPE;
-    }
-    
-    /**
-     * Getter DeliveryFee for Cash Invoice
-     * @return DeliveryFee untuk mengecek variabel DeliveryFee ke variabel instance
-     */ 
-    public int getDeliveryFee()
-    {
+
+    public int getDeliveryFee() {
         return deliveryFee;
     }
-    
-    /**
-     * Setter DeliveryFee for Cash Invoice
-     * @this DeliveryFee untuk memasukkan variabel DeliveryFee ke variabel instance
-     */  
-    public void setDeliveryFee(int deliveryFee)
-    {
+
+    public void setDeliveryFee(int deliveryFee) {
         this.deliveryFee = deliveryFee;
     }
-    
-    /**
-     * Setter TotalPrice for Cash Invoice
-     * @super TotalPrice untuk memasukkan variabel TotalPrice ke variabel instance
-     */  
-     public void setTotalPrice()
-     {
-        if(deliveryFee != 0){
-            super.totalPrice = super.getFood().getPrice() + getDeliveryFee();
-        }else{
-            super.totalPrice = super.getFood().getPrice();
+
+    public void setTotalPrice() {
+        ArrayList<Food> listFood = super.getFoods();
+
+
+        for (Food food: listFood) {
+            total += food.getPrice();
+        }
+
+
+        if (deliveryFee > 0) {
+            super.totalPrice = total + deliveryFee;
+        } else {
+            super.totalPrice = total;
         }
     }
-        
-    
-    /**
-     * Print Data (Post Test Modul 4)
-     */
-    public String toString()
-    {
-        SimpleDateFormat dateNow = this.dateFormat;
-        return "=========Invoice=========="+"\n"+
-        "ID: "+ getId()+ "\n"+
-        "Food ID: "+ getFood().getId()+ "\n" +
-        "Date: "+ dateNow.format(super.getDate().getTime())+ "\n" +
-        "Customer: "+ getCustomer().getName()+ "\n"+
-        "Delivery Fee :" +getDeliveryFee()+ "\n"+
-        "TotalPrice: "+ super.totalPrice+ "\n" +
-        "Status: "+ getInvoiceStatus()+ "\n" +
-        "Payment Type: "+ getPaymentType()+ "\n";
+
+    public String toString() {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+
+        String strFoodList = "";
+        ArrayList<Food> list = super.getFoods();
+        for (Food food: list) {
+            strFoodList += food.getName() + "\n";
+        }
+
+        return "\nId: " + super.getId() + "\n" +
+                "Food Name: " + strFoodList + "\n" +
+                "Date: " + formatter.format(super.getDate().getTime()) + "\n" +
+                "Delivery Fee: " + deliveryFee + "\n" +
+                "Total Price: " + super.totalPrice + "\n" +
+                "Customer Name: " + super.getCustomer().getName() + "\n" +
+                "Invoice Status: " + super.getInvoiceStatus().toString() + "\n" +
+                "Payment Type: " + PAYMENT_TYPE.toString();
+    }
+
+    public PaymentType getPaymentType() {
+        return PAYMENT_TYPE;
     }
 }

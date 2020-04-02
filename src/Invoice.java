@@ -1,170 +1,146 @@
 import java.util.*;
+import java.util.regex.*;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.text.SimpleDateFormat;
-
 /**
- * Ini adalah class invoice yang terdiri dari id, idFood, date, totalPrice, Customer sebagai atribut
- * Class merupakan sebuah blueprint dari sebuah objek yang merepresentasikan konsep objek
+ * Ini adalah class Invoice
  *
  * @author Fahri Alamsyah
- * @version 12-03-2020
+ * @version 02-04-2020
  */
 public abstract class Invoice
 {
-    /**
-     * Bagian dari Variabel instances
-     * Modifier private akan membuat member hanya bisa diakses oleh dari dalam class itu sendiri.
-     * Perlu diingat: 
-     * Modifier private tidak bisa diberikan kepada class, enum, dan interface. 
-     * Modifier private hanya bisa diberikan kepada member class.
-     */
+    // instance variables - replace the example below with your own
     private int id;
-    private Food food;
-    //private int idFood;
+    private ArrayList<Food> foods;
     private Calendar date;
     protected int totalPrice;
-    //private int totalPrice;
-    //private PaymentType paymentType;
     private Customer customer;
     private InvoiceStatus invoiceStatus;
+    // private PaymentType paymentType;
+
 
     /**
-     * Constructor for objects of class Invoice 
-     * Constructor sama dengan metode yang dipanggil ketika sebuah objek di-instance.
-     * Nama konstruktor harus sama dengan nama class , dan tidak dapat menghasilkan nilai balik 
-     * dan tidak memiliki tipe nilai balik pada header metode.
-     * Modifier public akan membuat member dan class bisa di akses dari mana saja.
-     * 
-     * @param id untuk menginisialisasikan input id baru
-     * @param idFood untuk menginisialisasikan input idFood baru
-     * @param date untuk menginisialisasikan input date baru
-     * @param customer untuk menginisialisasikan input customer baru
-     * @param total price menginisialisasikan input total harga baru
+     * Constructor for objects of class Invoice
+     * @param id untuk inisiasi id dari input obyek baru
+     * @param idFood untuk inisiasi idFood dari input obyek baru
+     * @param date untuk inisiasi date dari input obyek baru
+     * @param customer untuk inisiasi customer dari input obyek baru
+     * @param totalPrice untuk inisiasi total price dari input obyek baru
      */
-    public Invoice(int id, Food food,Customer customer,InvoiceStatus invoiceStatus)
+    public Invoice(int id, ArrayList<Food> foods, Customer customer)
     {
-     this.id = id;
-     this.food = food;
-     Calendar now = Calendar.getInstance();
-     this.date = now;
-     this.customer = customer;
-     this.invoiceStatus = invoiceStatus;
-     
+        // initialise instance variables
+        this.id = id;
+        this.foods = foods;
+        Calendar now = Calendar.getInstance();
+        this.date = now;
+        this.customer = customer;
+        this.invoiceStatus = InvoiceStatus.Ongoing;
+
     }
-    
+
     /**
-     * Getter id for invoice
-     * @return id untuk mengecek variabel id ke variabel instance
+     * Getter id Invoice
+     * @return id
      */
-    public int getId()
-    {
-      return id;   
+    public int getId(){
+        return id;
     }
-    
+
     /**
-     * Getter idFood for invoice
-     * @return idFood untuk mengecek variabel idFood ke variabel instance
+     * Getter idFood Invoice
+     * @return idFood
      */
-    public Food getFood()
-    {
-      return food;
+    public ArrayList<Food> getFoods(){
+        return foods;
     }
-    
+
     /**
-     * Getter Date for invoice
-     * @return Date untuk mengecek variabel Date ke variabel instance
+     * Getter date Invoice
+     * @return date
      */
-    public Calendar getDate()
-    {
-       return date;
+    public Calendar getDate(){
+        return date;
     }
-    
+
     /**
-     * Getter TotalPrice for invoice
-     * @return totalPrice untuk mengecek variabel TotalPrice ke Variabel instance
+     * Getter totalPrice Invoice
+     * @return totalPrice
      */
-      public int getTotalPrice()
-    {
-       return totalPrice;
+    public int getTotalPrice(){
+        return totalPrice;
     }
-    
+
     /**
-     * Getter Customer for invoice
-     * @return customer untuk mengecek variabel customer ke variabel instance
+     * Getter Customer Invoice
+     * @return customer
      */
-      public Customer getCustomer()
-    {
-      return customer;
+    public Customer getCustomer(){
+        return customer;
     }
-    
-    public InvoiceStatus getInvoiceStatus()
-    {
-      return invoiceStatus;
-    }
-    
+
     public abstract PaymentType getPaymentType();
-    
-    
-    public void setInvoiceStatus(InvoiceStatus status)
-    {
-        this.invoiceStatus = invoiceStatus;
+
+    public InvoiceStatus getInvoiceStatus(){
+        return invoiceStatus;
     }
-   
-    
+
     /**
-     * Setter id for invoice
-     * @param id untuk set ke instance variabel id
+     * Setter id Invoice
+     * @param id untuk set ke instance variable id
      */
-    public void setId(int id)
-    {
-      this.id = id;
+    public void setId(int id){
+        this.id = id;
     }
-    
+
     /**
-     * Setter idFood for invoice
-     * @param idFood untuk set ke instance variabel idFood
+     * Setter idFood Invoice
+     * @param idFood untuk set ke instance variable idFood
      */
-    public void setFood(Food food)
-    {
-        this.food = food;
+    public void setFoods(ArrayList<Food> foods){
+        this.foods = foods;
     }
-    
+
     /**
-     * Setter Date for Invoice
-     * @param Date untuk set ke instance variabel Date 
+     * Setter date Invoice
+     * @param date untuk set ke instance variable date
      */
-    public Calendar setDate(Calendar date)
-    {
-        return date ;
+    public Calendar setDate(Calendar date){
+        return date;//this.date = date;
     }
-    
-    public Calendar setDate(int year, int month, int dayOfMonth)
-    {
-        return date ;
+
+    public Calendar setDate(int year, int month, int dayOfMonth){
+        //this.date = date;
+        return date;
     }
-    
+
     /**
-     * Setter TotalPrice for Invoice
-     * @param TotalPrice untuk set ke instance variabel TotalPrice
+     * Setter total price for Invoice
+     * @param totalPrice untuk set ke instance variable totalPrice
      */
     public abstract void setTotalPrice();
-    
+
     /**
-     * Setter Customer for Invoice
-     * @param customer untuk set ke instance variabel customer
+     * Setter customer Invoice; Member object from class Customer
+     * @param customer untuk set ke instance variable customer
      */
-    public void setCustomer(Customer customer)
-    {
+    public void setCustomer(Customer customer){
         this.customer = customer;
     }
-    
-    
-    
+
+
+    public void setInvoiceStatus(InvoiceStatus invoiceStatus){
+        this.invoiceStatus = invoiceStatus;
+    }
+
+    /**
+     * Print data invoice
+     */
     public String toString(){
         return null;
     }
-    
 }

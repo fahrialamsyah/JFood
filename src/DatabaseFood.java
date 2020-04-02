@@ -1,65 +1,91 @@
+import java.util.ArrayList;
 
 /**
- * Ini adalah Class Database Food
- * Class merupakan sebuah blueprint dari sebuah objek yang merepresentasikan konsep objek
- * @author (Fahri Alamsyah)
- * @version (27-02-2020)
+ * Write a description of class Food here.
+ *
+ * @author Fahri Alamsyah
+ * @version 02 - 04 -2020
  */
 public class DatabaseFood
 {
-    /**
-     * Bagian dari Variabel instances
-     * Modifier private akan membuat member hanya bisa diakses oleh dari dalam class itu sendiri.
-     * Perlu diingat: 
-     * Modifier private tidak bisa diberikan kepada class, enum, dan interface. 
-     * Modifier private hanya bisa diberikan kepada member class.
-     */
     // instance variables - replace the example below with your own
-    private static String[] listFood;
+    private static ArrayList<Food> FOOD_DATABASE = new ArrayList<>();
+    private static int lastId = 0;
+
+
+
+
 
     /**
-     * Constructor for objects of class DatabaseFood
+     * <h1> This method used for adding food to the database</h1>
+     * @param food
+     * @return boolean
      */
-    
-    
+    public static boolean addFood(Food food) {
+
+        if (FOOD_DATABASE.add(food)) {
+            FOOD_DATABASE.indexOf(food);
+            return true;
+        }
+        return false;
+    }
+
+
+    /** <h1> This method used for removing food from the database </h1>
+
+     * @return boolean
+     */
+    public static boolean removeFood(int id) {
+        Food food = FOOD_DATABASE.get(id);
+        if (food != null) {
+            FOOD_DATABASE.remove(food);
+            return true;
+        }
+        return false;
+    }
+
+
     /**
-     * Hanya memiliki dua nilai valid yakni true dan false. 
-     * Nilai boolean tidak dapat dikonversi menjadi tipe data lain,
-     * atau tipe data lain juga tidak dapat dikonversi menjadi sebuah 
-     * nilai boolean. Kata True dan False merupakan kata kunci dalam Java sebagai literal
-     * Boolean dan tidak dapat digunakan diluar konteks ini.
-     * 
+     * <h1>This method will return the food object</h1>
+     * @return Food object
      */
-    public static boolean addFood(Food food)
-    {
-        return true;
+    public static Food getFoodById(int idx){
+        Food food = FOOD_DATABASE.get(idx);
+
+        if (food != null) {
+            return food;
+        }
+        return null;
     }
-    
+
+    public static ArrayList<Food> getFoodBySeller(int idseller) {
+        ArrayList<Food> ret = new ArrayList<>();
+        for (Food food: FOOD_DATABASE) {
+            if (food.getSeller().getId() == idseller) {
+                ret.add(food);
+            }
+        }
+        return ret;
+    }
+
+    public static ArrayList<Food> getFoodByCategory(FoodCategory category) {
+        ArrayList<Food> ret = new ArrayList<>();
+        for (Food food: FOOD_DATABASE) {
+            if (food.getCategory() == category) {
+                ret.add(food);
+            }
+        }
+        return ret;
+    }
     /**
-     * Hanya memiliki dua nilai valid yakni true dan false. 
-     * Nilai boolean tidak dapat dikonversi menjadi tipe data lain,
-     * atau tipe data lain juga tidak dapat dikonversi menjadi sebuah 
-     * nilai boolean. Kata True dan False merupakan kata kunci dalam Java sebagai literal
-     * Boolean dan tidak dapat digunakan diluar konteks ini.
-     * 
+     * <h1>This method will return a list of food as an array of string</h1>
+     * @return String[]
      */
-    public static boolean removeFood(Food food)
-    {
-        return true;
+    public static ArrayList<Food> getFoodDatabase(){
+        return FOOD_DATABASE;
     }
-    
-    public static void getFood(Food food)
-    {
-        
+
+    public static int getLastId(){
+        return lastId;
     }
-    
-      /**
-     * Getter ListFood for DatabaseFood
-     * @return listfood untuk mengecek variabel listfood ke variabel instance
-     */
-    public static String[] getListFood()
-    {
-        return listFood;
-    }
-    
 }

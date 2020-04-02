@@ -2,8 +2,8 @@
 /**
  * Enumeration class PaymentType - write a description of the enum class here
  *
- * @author (your name here)
- * @version (version number or date here)
+ * @author Fahri Alamsyah
+ * @version 02 - 04 - 2020
  */
 public enum PaymentType
 {

@@ -1,10 +1,9 @@
 import java.util.ArrayList;
-
 /**
  * Write a description of class DatabaseCustomer here.
  *
  * @author Fahri Alamsyah
- * @version 04-02-2020
+ * @version 02 - 04 - 2020
  */
 public class DatabaseCustomer
 {
@@ -17,18 +16,18 @@ public class DatabaseCustomer
     public DatabaseCustomer()
     {
         // initialise instance variables
-
     }
-
     /**
      * An example of a method - replace this comment with your own
      *
      */
+
     public static boolean addCustomer(Customer customer) {
         boolean sameEmailBuff = false;
         for (Customer buff: CUSTOMER_DATABASE) {
-            if (customer.getEmail() == buff.getEmail()) {
+            if (customer.getEmail().equals(buff.getEmail())) {
                 sameEmailBuff = true;
+                break;
             }
         }
 
@@ -40,30 +39,26 @@ public class DatabaseCustomer
     }
 
     public static boolean removeCustomer(int id) {
-        Customer customer = CUSTOMER_DATABASE.get(id);
-        if (customer != null) {
-            CUSTOMER_DATABASE.remove(customer);
-            return true;
+        for (Customer customer: CUSTOMER_DATABASE) {
+            if (customer.getId() == id){
+                CUSTOMER_DATABASE.remove(customer);
+                return true;
+            }
         }
         return false;
     }
-
-
-
     public static ArrayList<Customer> getCustomerDatabase() {
         return CUSTOMER_DATABASE;
     }
-
     public static int getLastId() {
         return lastId;
     }
-
     public static Customer getCustomerById(int id) {
-        Customer customer = CUSTOMER_DATABASE.get(id);
-        if (customer != null) {
-            return customer;
+        for (Customer customer: CUSTOMER_DATABASE) {
+            if (customer.getId() == id){
+                return customer;
+            }
         }
         return null;
     }
-
 }

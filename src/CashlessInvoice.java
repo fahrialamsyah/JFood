@@ -16,7 +16,7 @@ public class CashlessInvoice extends Invoice
     /**
      * Constructor for objects of class CashlessInvoice
      */
-    public CashlessInvoice(int id, ArrayList<Food> food, Customer customer, InvoiceStatus invoiceStatus)
+    public CashlessInvoice(int id, ArrayList<Food> food, Customer customer)
     {
         // initialise instance variables
         super(id, food, customer);
@@ -24,7 +24,7 @@ public class CashlessInvoice extends Invoice
 
     }
 
-    public CashlessInvoice(int id, ArrayList<Food> food, Customer customer, InvoiceStatus invoiceStatus, Promo promo) {
+    public CashlessInvoice(int id, ArrayList<Food> food, Customer customer, Promo promo) {
         super(id, food, customer);
         this.promo = promo;
     }
@@ -70,7 +70,7 @@ public class CashlessInvoice extends Invoice
                 "Date: " + formatter.format(super.getDate().getTime()) + "\n" +
                 "Total Price: " + super.totalPrice + "\n" +
                 "Customer Name: " + super.getCustomer().getName() + "\n" +
-                "Invoice Status: " + super.getInvoiceStatus().toString() + "\n" +
+                //"Invoice Status: " + super.getInvoiceStatus().toString() + "\n" +
                 "Payment Type: " + PAYMENT_TYPE.toString();
 
         if ((promo != null && promo.getActive() && total > promo.getMinPrice())) {

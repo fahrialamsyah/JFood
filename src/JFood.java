@@ -30,10 +30,15 @@ public class JFood
 
         Location location = new Location("Depok", "Jawa Barat", "Warung");
 
+        DatabasePromo.addPromo(new Promo(1, "Promo Tahun Baru Cina", 50000, 30000, true));
+        DatabasePromo.addPromo(new Promo(2, "Liburan Seekolah", 25000, 30545, true));
+
+        System.out.println(DatabasePromo.getPromoDatabase());
+
         DatabaseSeller.addSeller(new Seller(1, "Fahri", "fahri@fahri.com", "0888888111", location));
-        DatabaseCustomer.addCustomer(new Customer(1, "Fahri Alamsyah A", "fahrialamsyah@ui.ac.id", "ASHSH123"));
-        DatabaseCustomer.addCustomer(new Customer(2, "Fahri Alamsyah B", "fahrialamsyah1@ui.ac.id", "ASHSHS123"));
-        DatabaseCustomer.addCustomer(new Customer(3, "Gilang", "gilang@aaaa.com", "AAASSS23"));
+        DatabaseCustomer.addCustomer(new Customer(1, "Fahri Alamsyah A", "fahrialamsyah@ui.ac.id", "Fahri1234"));
+        DatabaseCustomer.addCustomer(new Customer(2, "Fahri Alamsyah B", "fahrialamsyah1@ui.ac.id", "Fahri1234"));
+        DatabaseCustomer.addCustomer(new Customer(3, "Gilang", "gilang@aaaa.com", "Gilang1234"));
 
         for (Customer customer: DatabaseCustomer.getCustomerDatabase()) {
             System.out.println(customer.getName());

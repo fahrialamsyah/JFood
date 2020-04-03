@@ -12,11 +12,11 @@ public class CashInvoice extends Invoice {
     private PaymentType PAYMENT_TYPE = PaymentType.Cash;
     private int deliveryFee;
     private int total = 0;
-    public CashInvoice(int id, ArrayList<Food> food, Customer customer, InvoiceStatus invoiceStatus) {
+    public CashInvoice(int id, ArrayList<Food> food, Customer customer) {
         super(id, food, customer);
     }
 
-    public CashInvoice(int id, ArrayList<Food> food, Customer customer, InvoiceStatus invoiceStatus, int deliveryFee){
+    public CashInvoice(int id, ArrayList<Food> food, Customer customer, int deliveryFee){
         super(id, food, customer);
         this.deliveryFee = deliveryFee;
     }
@@ -60,11 +60,12 @@ public class CashInvoice extends Invoice {
                 "Delivery Fee: " + deliveryFee + "\n" +
                 "Total Price: " + super.totalPrice + "\n" +
                 "Customer Name: " + super.getCustomer().getName() + "\n" +
-                "Invoice Status: " + super.getInvoiceStatus().toString() + "\n" +
+               // "Invoice Status: " + super.getInvoiceStatus().toString() + "\n" +
                 "Payment Type: " + PAYMENT_TYPE.toString();
     }
 
-    public PaymentType getPaymentType() {
+    public PaymentType getPaymentType()
+    {
         return PAYMENT_TYPE;
     }
 }

@@ -1,15 +1,13 @@
 /**
-* Program Customer merupakan kelas yang mengimplementasikan data pembeli makanan
-* 
-* @author Fahri Alamsyah
-* @version 19-03-2020
-*/
+ * Program Customer merupakan kelas yang mengimplementasikan data pembeli makanan
+ *
+ * @author Fahri Alamsyah
+ * @version 02-04-2020
+ */
 import java.util.*;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.text.SimpleDateFormat;
 
 
 public class Customer
@@ -22,79 +20,82 @@ public class Customer
     private Calendar joinDate;
     private Pattern pattern;
     private Matcher mathcer;
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy");
-    
-    
+
+
     /**
-      * Method ini berfungsi untuk memanggil data pada Class Customer.
-      * Method ini mengumpulkan dan memanggil data yang telah dibuat pada method lain.
-      * 
-      * @param id merupakan parameter yang menunjukkan id Customer.
-      * @param name merupakan parameter untuk nama Customer.
-      * @param email merupakan parameter untuk email customer.
-      * @param password merupakan parameter untuk password email customer.
-      * @param joinDate merupakan parameter untuk menunjukkan pada tanggal berapa Customer bergabung.
-      * @return Tidak ada.
-      */
+     * Method ini berfungsi untuk memanggil data pada Class Customer.
+     * Method ini mengumpulkan dan memanggil data yang telah dibuat pada method lain.
+     *
+     * @param id merupakan parameter yang menunjukkan id Customer.
+     * @param name merupakan parameter untuk nama Customer.
+     * @param email merupakan parameter untuk email customer.
+     * @param password merupakan parameter untuk password email customer.
+     * @param joinDate merupakan parameter untuk menunjukkan pada tanggal berapa Customer bergabung.
+     * @return Tidak ada.
+     */
     public Customer(int id, String name, String email, String password, Calendar joinDate)
     {
         this.id = id;
         this.name = name;
+        this.email = email;
+        this.password = password;
         this.joinDate = joinDate;
         setPassword(password);
         setEmail(email);
     }
-    
-     /**
-      * Method ini berfungsi untuk memanggil data pada Class Customer.
-      * Method ini mengumpulkan dan memanggil data yang telah dibuat pada method lain.
-      * 
-      * @param id merupakan parameter yang menunjukkan id Customer.
-      * @param name merupakan parameter untuk nama Customer.
-      * @param email merupakan parameter untuk email customer.
-      * @param password merupakan parameter untuk password email customer.
-      * @param joinDate merupakan parameter untuk menunjukkan pada tanggal berapa Customer bergabung.
-      * @return Tidak ada.
-      */
+
+    /**
+     * Method ini berfungsi untuk memanggil data pada Class Customer.
+     * Method ini mengumpulkan dan memanggil data yang telah dibuat pada method lain.
+     *
+     * @param id merupakan parameter yang menunjukkan id Customer.
+     * @param name merupakan parameter untuk nama Customer.
+     * @param email merupakan parameter untuk email customer.
+     * @param password merupakan parameter untuk password email customer.
+     * @param joinDate merupakan parameter untuk menunjukkan pada tanggal berapa Customer bergabung.
+     * @return Tidak ada.
+     */
     public Customer(int id, String name, String email, String password, int year, int month, int dayOfMonth)
     {
         this.id = id;
         this.name = name;
+        this.email = email;
+        this.password = password;
         this.joinDate = new GregorianCalendar(year, month, dayOfMonth);
         setPassword(password);
         setEmail(email);
     }
-    
-     /**
-      * Method ini berfungsi untuk memanggil data pada Class Customer.
-      * Method ini mengumpulkan dan memanggil data yang telah dibuat pada method lain.
-      * 
-      * @param id merupakan parameter yang menunjukkan id Customer.
-      * @param name merupakan parameter untuk nama Customer.
-      * @param email merupakan parameter untuk email customer.
-      * @param password merupakan parameter untuk password email customer.
-      * @param joinDate merupakan parameter untuk menunjukkan pada tanggal berapa Customer bergabung.
-      * @return Tidak ada.
-      */
+
+    /**
+     * Method ini berfungsi untuk memanggil data pada Class Customer.
+     * Method ini mengumpulkan dan memanggil data yang telah dibuat pada method lain.
+     *
+     * @param id merupakan parameter yang menunjukkan id Customer.
+     * @param name merupakan parameter untuk nama Customer.
+     * @param email merupakan parameter untuk email customer.
+     * @param password merupakan parameter untuk password email customer.
+     * @param joinDate merupakan parameter untuk menunjukkan pada tanggal berapa Customer bergabung.
+     * @return Tidak ada.
+     */
     public Customer(int id, String name, String email, String password)
     {
         this.id = id;
         this.name = name;
+        this.email = email;
+        this.password = password;
         setPassword(password);
         setEmail(email);
-        Calendar c = Calendar.getInstance();
-        this.joinDate = c;
     }
-    
+
     /**
      * Method untuk mengambil id pada Class Customer
      * @return merepresentasikan data id pada Class Customer
      */
-    public int getId() 
+    public int getId()
     {
         return id;
     }
-    
+
     /**
      * Method untuk mengambil data Name pada Class Customer.
      * @return merepresentasikan data name pada Class Customer.
@@ -103,7 +104,7 @@ public class Customer
     {
         return name;
     }
-    
+
     /**
      * Method untuk mengambil Email pada Class Customer.
      * @return merepresentasikan data email pada Class Customer.
@@ -112,7 +113,7 @@ public class Customer
     {
         return email;
     }
-    
+
     /**
      * Method untuk mengambil data Password pada Class Customer.
      * @return merepresentasikan data Password pada Class Customer.
@@ -121,7 +122,7 @@ public class Customer
     {
         return password;
     }
-    
+
     /**
      * Method untuk mengambil data joinDate pada Class Customer.
      * @return merepresentasikan data joinDate pada Class Customer.
@@ -130,8 +131,8 @@ public class Customer
     {
         return joinDate;
     }
-    
-   
+
+
     /**
      * Method untuk membuat id Customer pada Class Customer.
      * @param id mengandung informasi tentang id makanan pada Class Customer.
@@ -140,7 +141,7 @@ public class Customer
     {
         this.id = id;
     }
-    
+
     /**
      * Method untuk membuat Nama Customer pada Class Customer.
      * @param id mengandung informasi tentang nama Customer pada Class Customer.
@@ -149,7 +150,7 @@ public class Customer
     {
         this.name = name;
     }
-    
+
     /**
      * Method untuk membuat Email Customer pada Class Customer.
      * @param id mengandung informasi tentang email customer pada Class Customer.
@@ -157,10 +158,10 @@ public class Customer
      */
     public void setEmail(String email)
     {
-        String pattern =  "^[a-zA-Z0-9_+&*-]+(?:\\."+  
-                            "[a-zA-Z0-9_+&*-]+)*@" +  
-                            "(?:[a-zA-Z0-9-]+\\.)+[a-z" +  
-                            "A-Z]{2,7}$";
+        String pattern =  "^[a-zA-Z0-9_+&*-]+(?:\\."+
+                "[a-zA-Z0-9_+&*-]+)*@" +
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                "A-Z]{2,7}$";
         Pattern p = Pattern.compile(pattern);
         Matcher m = p.matcher(email);
         if (m.find()) {
@@ -170,9 +171,9 @@ public class Customer
             System.out.println("Email : null");
             this.email = email;
         }
-            
+
     }
-    
+
     /**
      * Method untuk membuat password dari email Customer pada Class Customer.
      * @param id mengandung informasi tentang password email customer pada Class Customer.
@@ -191,7 +192,7 @@ public class Customer
             this.password = "NULL";
         }
     }
-    
+
     /**
      * Method untuk membuat tanggal bergabungnya Customer pada Class Customer.
      * @param joinDate mengandung informasi tentang Tanggal bergabungnya Customer pada Class Customer.
@@ -200,8 +201,8 @@ public class Customer
     {
         this.joinDate = joinDate;
     }
-    
-     /**
+
+    /**
      * Method untuk membuat tanggal bergabungnya Customer pada Class Customer.
      * @param joinDate mengandung informasi tentang Tanggal bergabungnya Customer pada Class Customer.
      */
@@ -209,28 +210,15 @@ public class Customer
     {
         this.joinDate = new GregorianCalendar(year, month-1, dayOfMonth);
     }
-    
+
     public String toString(){
-        
-        SimpleDateFormat dateNow = this.dateFormat;
-        if (joinDate != null){
         return "=========Customer========\n" +
-        "Id : " + getId() + "\n" +
-        "Nama : " + getName() + "\n"+
-        "Email : " + getEmail() + "\n"+
-        "Password : " + getPassword() + "\n"+
-        "JoinDate : " + dateNow.format(joinDate.getTime());
+                "Id : " + getId() + "\n" +
+                "Nama : " + getName() + "\n"+
+                "Email : " + getEmail() + "\n"+
+                "Password : " + getPassword() + "\n"+
+                "JoinDate : " + getJoinDate() + "\n";
     }
-        else{
-            return "================Customer================\n" + 
-       "Id : " + getId() + "\n" +
-       "Nama : " + getName() + "\n" +
-       "Email : " + getEmail() + "\n" +
-       "Password : " + getPassword() + "\n";
-        }
-       
-       
-    }
-    
-   
+
+
 }

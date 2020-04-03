@@ -39,7 +39,7 @@ public abstract class Invoice
         Calendar now = Calendar.getInstance();
         this.date = now;
         this.customer = customer;
-        this.invoiceStatus = InvoiceStatus.Ongoing;
+       /// this.invoiceStatus = InvoiceStatus.Ongoing;
 
     }
 

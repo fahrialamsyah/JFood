@@ -1,33 +1,35 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+
 /**
- * Write a description of class DatabaseCustomer here.
+ * Write a description of class DatabaseInvoice here.
  *
  * @author Fahri Alamsyah
- * @version 03 - 04 - 2020 Post Test Modul 6
+ *  @version 08-04-2020
  */
-public class DatabaseInvoice {
-    private static ArrayList<Invoice> INVOICE_DATABASE = new ArrayList<Invoice>();
-    private static int lastId = 0;
 
-    /**
-     * Constructor for objects of class DatabaseInvoice
-     */
+public class DatabaseInvoice
+{
+    private static ArrayList<Invoice> INVOICE_DATABASE = new ArrayList<Invoice>();
+    private static int lastid = 0;
+
 
     public static ArrayList<Invoice> getInvoiceDatabase()
     {
         return INVOICE_DATABASE;
     }
 
+
     public static int getLastId()
     {
-        return lastId;
+        return lastid;
     }
 
     public static Invoice getInvoiceById(int id)
     {
         for(Invoice invoice : INVOICE_DATABASE)
         {
-            if (invoice.getId() == id)
+            if(id == invoice.getId())
             {
                 return invoice;
             }
@@ -35,47 +37,57 @@ public class DatabaseInvoice {
         return null;
     }
 
+
     public static ArrayList<Invoice> getInvoiceByCustomer(int customerId)
     {
-        ArrayList<Invoice> listCust = new ArrayList<Invoice>();
-        for(Invoice invoice: INVOICE_DATABASE)
+        ArrayList<Invoice> invoiceList = new ArrayList<Invoice>();
+        Customer customer = DatabaseCustomer.getCustomerById(customerId);
+
+        for(Invoice invoice : INVOICE_DATABASE)
         {
-            if(invoice.getCustomer().getId() == customerId)
+            if(customer.equals(invoice.getCustomer()))
             {
-                listCust.add(invoice);
-                return listCust;
+                invoiceList.add(invoice);
             }
         }
-        return null;
+        return invoiceList;
     }
 
     public static boolean addInvoice(Invoice invoice)
     {
-        for(Invoice invoiceDB: INVOICE_DATABASE)
+        int customerId = invoice.getCustomer().getId();
+        for (Invoice invoiceLagi : INVOICE_DATABASE)
         {
-            if(invoiceDB.getInvoiceStatus().equals(invoice.getInvoiceStatus().Ongoing))
+            if (invoiceLagi.getCustomer().getId() == customerId && invoiceLagi.getInvoiceStatus() == InvoiceStatus.Ongoing)
             {
                 return false;
             }
         }
         INVOICE_DATABASE.add(invoice);
-        lastId = invoice.getId();
+        lastid = invoice.getId();
+
         return true;
     }
 
-    public static boolean changeInvoiceStatus(int id, InvoiceStatus invoiceStatus){
-        for(Invoice invoiceDB: INVOICE_DATABASE){
-            if(invoiceDB.getInvoiceStatus() == InvoiceStatus.Ongoing && invoiceDB.getId() == id){
-                invoiceDB.setInvoiceStatus(invoiceStatus);
+
+    public static boolean changeInvoiceStatus(int id, InvoiceStatus status)
+    {
+        for(Invoice invoice : INVOICE_DATABASE)
+        {
+            if(status.equals(InvoiceStatus.Ongoing))
+            {
                 return true;
             }
         }
         return false;
     }
 
-    public static boolean removeInvoice(int id) {
-        for (Invoice invoice : INVOICE_DATABASE) {
-            if (invoice.getId() == id) {
+    public static boolean removeInvoice(int id)
+    {
+        for(Invoice invoice : INVOICE_DATABASE)
+        {
+            if(id == invoice.getId())
+            {
                 INVOICE_DATABASE.remove(invoice);
                 return true;
             }
@@ -83,3 +95,4 @@ public class DatabaseInvoice {
         return false;
     }
 }
+

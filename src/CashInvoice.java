@@ -1,5 +1,6 @@
 import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
+import java.text.*;
 import java.util.ArrayList;
 /**
  * Ini adalah Class CashInvoice
@@ -30,21 +31,14 @@ public class CashInvoice extends Invoice {
     }
 
     public void setTotalPrice() {
-        ArrayList<Food> listFood = super.getFoods();
-
-
-        for (Food food: listFood) {
-            total += food.getPrice();
+        if (deliveryFee!=0){
+            this.totalPrice=totalPrice+getDeliveryFee();
+        }
+        else{
+            this.totalPrice=totalPrice;
         }
 
-
-        if (deliveryFee > 0) {
-            super.totalPrice = total + deliveryFee;
-        } else {
-            super.totalPrice = total;
-        }
     }
-
     public String toString() {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -60,7 +54,7 @@ public class CashInvoice extends Invoice {
                 "Delivery Fee: " + deliveryFee + "\n" +
                 "Total Price: " + super.totalPrice + "\n" +
                 "Customer Name: " + super.getCustomer().getName() + "\n" +
-               // "Invoice Status: " + super.getInvoiceStatus().toString() + "\n" +
+                "Invoice Status: " + super.getInvoiceStatus().toString() + "\n" +
                 "Payment Type: " + PAYMENT_TYPE.toString();
     }
 

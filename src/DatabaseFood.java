@@ -49,23 +49,26 @@ public class DatabaseFood
      * <h1>This method will return the food object</h1>
      * @return Food object
      */
-    public static Food getFoodById(int idx){
-        Food food = FOOD_DATABASE.get(idx);
-
-        if (food != null) {
-            return food;
+    public static Food getFoodById(int id)
+    {
+        // put your code here
+        for(Food food : FOOD_DATABASE){
+            if (food.getId() == id){
+                return food;
+            }
         }
         return null;
     }
-
-    public static ArrayList<Food> getFoodBySeller(int idseller) {
-        ArrayList<Food> ret = new ArrayList<>();
-        for (Food food: FOOD_DATABASE) {
-            if (food.getSeller().getId() == idseller) {
-                ret.add(food);
+    public static ArrayList<Food> getFoodBySeller(int sellerId)
+    {
+        // put your code here
+        ArrayList<Food> list = new ArrayList<>();
+        for(Food food : FOOD_DATABASE){
+            if (food.getSeller().getId() == sellerId){
+                list.add(food);
             }
         }
-        return ret;
+        return list;
     }
 
     public static ArrayList<Food> getFoodByCategory(FoodCategory category) {

@@ -42,18 +42,13 @@ public class CashlessInvoice extends Invoice
     }
 
     public void setTotalPrice() {
-        ArrayList<Food> listFood = super.getFoods();
-
-
-        for (Food food: listFood) {
-            total += food.getPrice();
+        if (promo!=null && promo.getActive()==true && (totalPrice)>promo.getMinPrice()){
+            this.totalPrice=totalPrice-promo.getDiscount();
+        }
+        else{
+            this.totalPrice=totalPrice;
         }
 
-        if (promo != null && promo.getActive() && total > promo.getMinPrice()) {
-            super.totalPrice = total - promo.getDiscount();
-        } else {
-            super.totalPrice = total;
-        }
     }
 
     public String toString(){

@@ -133,7 +133,8 @@ public abstract class Invoice
     }
 
 
-    public void setInvoiceStatus(InvoiceStatus invoiceStatus){
+    public void setInvoiceStatus(InvoiceStatus invoiceStatus)
+    {
         this.invoiceStatus = invoiceStatus;
     }
 

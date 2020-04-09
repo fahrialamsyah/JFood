@@ -1,10 +1,11 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
- * Ini adalah kelas database promo
+ * Write a description of class DatabasePromo here.
  *
  * @author Fahri Alamsyah
- * @version 02 - 04 - 2020
+ * @version 09-04-2020
  */
 public class DatabasePromo
 {
@@ -26,45 +27,50 @@ public class DatabasePromo
      *
      * @return    the sum of x and y
      */
-    public static boolean addPromo(Promo promo) {
+    public static boolean addPromo(Promo promo) throws PromoCodeAlreadyExistsException{
 
         boolean samePromoCode = false;
         for (Promo buff: PROMO_DATABASE) {
-            if (promo.getCode() == buff.getCode()) {
+            if (promo.getCode().equals(buff.getCode())) {
                 samePromoCode = true;
+                break;
             }
         }
 
         if (!samePromoCode) {
             PROMO_DATABASE.add(promo);
-            lastId = PROMO_DATABASE.indexOf(promo);
-        }
-        return false;
-    }
-
-    public boolean removePromo (int id) {
-        Promo promo = PROMO_DATABASE.get(id);
-        if (promo != null) {
-            PROMO_DATABASE.remove(promo);
+            lastId = promo.getId();
             return true;
         }
-        return false;
+        throw new PromoCodeAlreadyExistsException(promo);
+    }
+
+    public boolean removePromo (int id) throws PromoNotFoundException{
+        for (Promo promo: PROMO_DATABASE) {
+            if (promo.getId() == id) {
+                PROMO_DATABASE.remove(promo);
+                return true;
+            }
+        }
+        throw new PromoNotFoundException(id);
     }
 
     public static boolean activatePromo(int id) {
-        Promo promo = PROMO_DATABASE.get(id);
-        if (promo != null) {
-            promo.setActive(true);
-            return true;
+        for (Promo promo: PROMO_DATABASE) {
+            if (promo.getId() == id) {
+                promo.setActive(true);
+                return true;
+            }
         }
         return false;
     }
 
     public static boolean deactivatePromo(int id) {
-        Promo promo = PROMO_DATABASE.get(id);
-        if (promo != null) {
-            promo.setActive(false);
-            return true;
+        for (Promo promo: PROMO_DATABASE) {
+            if (promo.getId() == id) {
+                promo.setActive(false);
+                return true;
+            }
         }
         return false;
     }
@@ -78,12 +84,14 @@ public class DatabasePromo
         return null;
     }
 
-    public static Promo getPromoById(int id) {
-        Promo promo = PROMO_DATABASE.get(id);
-        if (promo != null) {
-            return promo;
+    public static Promo getPromoById(int id) throws PromoNotFoundException{
+        for (Promo promo: PROMO_DATABASE) {
+            if (promo.getId() == id) {
+                return promo;
+            }
         }
-        return null;
+        throw new PromoNotFoundException(id);
+
     }
 
     public static ArrayList<Promo> getPromoDatabase() {

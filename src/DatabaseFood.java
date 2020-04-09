@@ -4,7 +4,7 @@ import java.util.ArrayList;
  * Write a description of class Food here.
  *
  * @author Fahri Alamsyah
- * @version 02 - 04 -2020
+ * @version 09-04-2020
  */
 public class DatabaseFood
 {
@@ -18,13 +18,13 @@ public class DatabaseFood
 
     /**
      * <h1> This method used for adding food to the database</h1>
-     * @param food
+     * @param food Food object
      * @return boolean
      */
     public static boolean addFood(Food food) {
 
         if (FOOD_DATABASE.add(food)) {
-            FOOD_DATABASE.indexOf(food);
+            lastId = food.getId();
             return true;
         }
         return false;
@@ -35,13 +35,14 @@ public class DatabaseFood
 
      * @return boolean
      */
-    public static boolean removeFood(int id) {
-        Food food = FOOD_DATABASE.get(id);
-        if (food != null) {
-            FOOD_DATABASE.remove(food);
-            return true;
+    public static boolean removeFood(int id) throws FoodNotFoundException{
+        for (Food food: FOOD_DATABASE) {
+            if (food.getId() == id) {
+                FOOD_DATABASE.remove(food);
+                return true;
+            }
         }
-        return false;
+        throw new FoodNotFoundException(id);
     }
 
 
@@ -49,26 +50,23 @@ public class DatabaseFood
      * <h1>This method will return the food object</h1>
      * @return Food object
      */
-    public static Food getFoodById(int id)
-    {
-        // put your code here
-        for(Food food : FOOD_DATABASE){
-            if (food.getId() == id){
+    public static Food getFoodById(int id) throws FoodNotFoundException{
+        for (Food food: FOOD_DATABASE) {
+            if (food.getId() == id) {
                 return food;
             }
         }
-        return null;
+        throw new FoodNotFoundException(id);
     }
-    public static ArrayList<Food> getFoodBySeller(int sellerId)
-    {
-        // put your code here
-        ArrayList<Food> list = new ArrayList<>();
-        for(Food food : FOOD_DATABASE){
-            if (food.getSeller().getId() == sellerId){
-                list.add(food);
+
+    public static ArrayList<Food> getFoodBySeller(int idseller) {
+        ArrayList<Food> ret = new ArrayList<>();
+        for (Food food: FOOD_DATABASE) {
+            if (food.getSeller().getId() == idseller) {
+                ret.add(food);
             }
         }
-        return list;
+        return ret;
     }
 
     public static ArrayList<Food> getFoodByCategory(FoodCategory category) {

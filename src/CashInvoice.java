@@ -1,18 +1,12 @@
 import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
-import java.text.*;
 import java.util.ArrayList;
-/**
- * Ini adalah Class CashInvoice
- *
- * @author Fahri Alamsyah
- * @version 02 - 04 - 2020
- */
+
 
 public class CashInvoice extends Invoice {
     private PaymentType PAYMENT_TYPE = PaymentType.Cash;
     private int deliveryFee;
-    private int total = 0;
+
     public CashInvoice(int id, ArrayList<Food> food, Customer customer) {
         super(id, food, customer);
     }
@@ -31,25 +25,32 @@ public class CashInvoice extends Invoice {
     }
 
     public void setTotalPrice() {
-        if (deliveryFee!=0){
-            this.totalPrice=totalPrice+getDeliveryFee();
-        }
-        else{
-            this.totalPrice=totalPrice;
+        ArrayList<Food> listFood = super.getFoods();
+        int total = 0;
+
+        for (Food food: listFood) {
+            total += food.getPrice();
         }
 
+
+        if (deliveryFee > 0) {
+            super.totalPrice = total + deliveryFee;
+        } else {
+            super.totalPrice = total;
+        }
     }
+
     public String toString() {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        StringBuilder stringBuilder = new StringBuilder();
 
-        String strFoodList = "";
         ArrayList<Food> list = super.getFoods();
         for (Food food: list) {
-            strFoodList += food.getName() + "\n";
+            stringBuilder.append(food.getName()).append("\n");
         }
-
+        setTotalPrice();
         return "\nId: " + super.getId() + "\n" +
-                "Food Name: " + strFoodList + "\n" +
+                "Food Name: " + stringBuilder + "\n" +
                 "Date: " + formatter.format(super.getDate().getTime()) + "\n" +
                 "Delivery Fee: " + deliveryFee + "\n" +
                 "Total Price: " + super.totalPrice + "\n" +
@@ -58,8 +59,7 @@ public class CashInvoice extends Invoice {
                 "Payment Type: " + PAYMENT_TYPE.toString();
     }
 
-    public PaymentType getPaymentType()
-    {
+    public PaymentType getPaymentType() {
         return PAYMENT_TYPE;
     }
 }

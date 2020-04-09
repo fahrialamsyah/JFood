@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
 /**
- * Ini adalah kelas DatabaseSeller here.
+ * Write a description of class DatabaseSeller here.
  *
  * @author Fahri Alamsyah
- * @version 02-04-2020
+ * @version 09 - 04 -2020
  */
 public class DatabaseSeller
 {
@@ -24,22 +24,20 @@ public class DatabaseSeller
     public static boolean addSeller(Seller seller) {
 
         SELLER_DATABASE.add(seller);
-        lastId = SELLER_DATABASE.indexOf(seller);
+        lastId = seller.getId();
         return true;
     }
 
-    public static boolean removeSeller(int id) {
-        Seller seller = SELLER_DATABASE.get(id);
-        if (seller != null) {
-            SELLER_DATABASE.remove(seller);
-            return true;
+    public static boolean removeSeller(int id) throws SellerNotFoundException {
+        for (Seller seller: SELLER_DATABASE) {
+            if (seller.getId() == id) {
+                SELLER_DATABASE.remove(seller);
+                return true;
+            }
         }
-        return false;
+        throw new SellerNotFoundException(id);
     }
 
-    public static Seller getSeller(){
-        return null;
-    }
 
     public static ArrayList<Seller> getSellerDatabase(){
         return SELLER_DATABASE;
@@ -49,12 +47,13 @@ public class DatabaseSeller
         return lastId;
     }
 
-    public static Seller getSellerById(int id) {
-        Seller seller = SELLER_DATABASE.get(id);
-        if (seller != null) {
-            return seller;
-        } else {
-            return null;
+    public static Seller getSellerById(int id) throws SellerNotFoundException {
+        for (Seller seller: SELLER_DATABASE) {
+            if (seller.getId() == id) {
+                return seller;
+            }
         }
+        throw new SellerNotFoundException(id);
+
     }
 }

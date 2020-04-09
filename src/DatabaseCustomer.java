@@ -1,9 +1,10 @@
 import java.util.ArrayList;
+
 /**
  * Write a description of class DatabaseCustomer here.
  *
  * @author Fahri Alamsyah
- * @version 02 - 04 - 2020
+ * @version 09 - 04 -2020
  */
 public class DatabaseCustomer
 {
@@ -16,13 +17,14 @@ public class DatabaseCustomer
     public DatabaseCustomer()
     {
         // initialise instance variables
+
     }
+
     /**
      * An example of a method - replace this comment with your own
      *
      */
-
-    public static boolean addCustomer(Customer customer) {
+    public static boolean addCustomer(Customer customer) throws EmailAlreadyExistsException{
         boolean sameEmailBuff = false;
         for (Customer buff: CUSTOMER_DATABASE) {
             if (customer.getEmail().equals(buff.getEmail())) {
@@ -33,32 +35,40 @@ public class DatabaseCustomer
 
         if (!sameEmailBuff) {
             CUSTOMER_DATABASE.add(customer);
-            lastId = CUSTOMER_DATABASE.indexOf(customer);
+            lastId = customer.getId();
+            return true;
         }
-        return false;
+        throw new EmailAlreadyExistsException(customer);
     }
 
-    public static boolean removeCustomer(int id) {
+    public static boolean removeCustomer(int id) throws CustomerNotFoundException{
         for (Customer customer: CUSTOMER_DATABASE) {
             if (customer.getId() == id){
                 CUSTOMER_DATABASE.remove(customer);
                 return true;
             }
         }
-        return false;
+        throw new CustomerNotFoundException(id);
     }
+
+
+
     public static ArrayList<Customer> getCustomerDatabase() {
         return CUSTOMER_DATABASE;
     }
+
     public static int getLastId() {
         return lastId;
     }
-    public static Customer getCustomerById(int id) {
+
+    public static Customer getCustomerById(int id) throws CustomerNotFoundException{
         for (Customer customer: CUSTOMER_DATABASE) {
             if (customer.getId() == id){
                 return customer;
             }
         }
-        return null;
+        throw new CustomerNotFoundException(id);
+
     }
+
 }

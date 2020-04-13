@@ -1,5 +1,11 @@
 import javax.xml.crypto.Data;
 import java.util.ArrayList;
+/**
+ * Write a description of class Database Invoice here.
+ *
+ * @author Fahri Alamsyah
+ * @version 13 - 04 - 2020
+ */
 
 public class DatabaseInvoice {
     private static ArrayList<Invoice> DATABASE_INVOICE = new ArrayList<>();
@@ -37,12 +43,13 @@ public class DatabaseInvoice {
         return null;
     }
 
-    public static boolean addInvoice(Invoice invoice) {
+    public static boolean addInvoice(Invoice invoice) throws OngoingInvoiceAlreadyExistsException{
 
         for (Invoice temp: DATABASE_INVOICE) {
             if (temp.getCustomer().getId() == invoice.getCustomer().getId()
-                    && temp.getInvoiceStatus().equals(InvoiceStatus.Ongoing)) {
-                return false;
+                    && temp.getInvoiceStatus().equals(InvoiceStatus.Ongoing))
+            {
+                throw new OngoingInvoiceAlreadyExistsException(invoice);
             }
         }
 
@@ -62,13 +69,13 @@ public class DatabaseInvoice {
         return false;
     }
 
-    public static boolean removeInvoice(int id) {
+    public static boolean removeInvoice(int id) throws InvoiceNotFoundException{
         for (Invoice invoice: DATABASE_INVOICE) {
             if (invoice.getId() == id) {
                 DATABASE_INVOICE.remove(invoice);
                 return true;
             }
         }
-        return false;
+        throw new InvoiceNotFoundException(id);
     }
 }

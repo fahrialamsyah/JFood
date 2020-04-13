@@ -7,18 +7,22 @@
  */
 public enum FoodCategory
 {
-    Beverages("Beverages"),Coffee("Coffee"),Western("Western"),Snacks("Snacks"),Rice("Rice"),Noodles("Noodles"),Bakery("Bakery"),Japanese("Japanese");
-    
-    private String kategori;
-    
-    FoodCategory(String kategori)
-    {
-        this.kategori = kategori;
+    Beverages("Beverages"),
+    Coffee("Coffee"),
+    Western ("Western"),
+    Snacks("Snacks"),
+    Rice("Rice"),
+    Noodles("Noodles"),
+    Bakery("Bakery"),
+    Japanese("Japanese");
+
+    private String category;
+
+    FoodCategory(String category){
+        this.category = category;
     }
-    
-    public String toString()
-    {
-        return kategori;
+
+    public String toString() {
+        return category;
     }
-    
 }

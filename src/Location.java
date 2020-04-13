@@ -2,7 +2,7 @@
  * Write a description of class Food here.
  *
  * @author Fahri Alamsyah
- * @version 09 - 04 -2020
+ * @version 09-04-2020
  */
 public class Location
 {
@@ -76,8 +76,7 @@ public class Location
      */
     public String toString(){
 
-        return "\n"+
-                "Province: " + province + "\n"+
+        return "Province: " + province + "\n" +
                 "City: " + city + "\n" +
                 "Description: " + description + "\n";
     }

@@ -1,12 +1,11 @@
 import javax.xml.crypto.Data;
 import java.util.ArrayList;
 /**
- * Write a description of class Database Invoice here.
+ * Write a description of class DatabaseInvoice here.
  *
  * @author Fahri Alamsyah
- * @version 13 - 04 - 2020
+ * @version 13 - 04 -2020
  */
-
 public class DatabaseInvoice {
     private static ArrayList<Invoice> DATABASE_INVOICE = new ArrayList<>();
     private static  int lastId = 0;
@@ -47,8 +46,7 @@ public class DatabaseInvoice {
 
         for (Invoice temp: DATABASE_INVOICE) {
             if (temp.getCustomer().getId() == invoice.getCustomer().getId()
-                    && temp.getInvoiceStatus().equals(InvoiceStatus.Ongoing))
-            {
+                    && temp.getInvoiceStatus().equals(InvoiceStatus.Ongoing)) {
                 throw new OngoingInvoiceAlreadyExistsException(invoice);
             }
         }

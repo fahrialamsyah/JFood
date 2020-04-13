@@ -1,167 +1,138 @@
+import java.util.GregorianCalendar;
 
 /**
- * Ini adalah Class invoice yang terdiri dari id, name, seller, price, category.
- * Class merupakan sebuah blueprint dari sebuah objek yang merepresentasikan konsep objek
+ * Write a description of class Food here.
  *
- * @author (Fahri Alamsyah)
- * @version (27-07-2020) dan 05 Maret 2020 dan 19 Maret 2020 dan 04 - 2 - 2020
+ * @author Fahri Alamsyah
+ * @version 09 - 04 - 2020
  */
 public class Food
 {
-    /**
-     * Bagian dari Variabel instances
-     * Modifier private akan membuat member hanya bisa diakses oleh dari dalam class itu sendiri.
-     * Perlu diingat: 
-     * Modifier private tidak bisa diberikan kepada class, enum, dan interface. 
-     * Modifier private hanya bisa diberikan kepada member class.
-     */// instance variables - replace the example below with your own
+    // instance variables - replace the example below with your own
     private int id;
     private String name;
-    private Seller seller;
     private int price;
+    private Seller seller;
     private FoodCategory category;
-   
+
     /**
      * Constructor for objects of class Food
-     * Constructor sama dengan metode yang dipanggil ketika sebuah objek di-instance.
-     * Nama konstruktor harus sama dengan nama class , dan tidak dapat menghasilkan nilai balik 
-     * dan tidak memiliki tipe nilai balik pada header metode.
-     * Modifier public akan membuat member dan class bisa di akses dari mana saja.
-     * 
-     * @param id untuk menginisialisasikan input id baru
-     * @param idFood untuk menginisialisasikan input idFood baru
-     * @param date untuk menginisialisasikan input date baru
-     * @param customer untuk menginisialisasikan input customer baru
-     * @param total price menginisialisasikan input total harga baru
      */
-    
-    public Food(int id,String name, Seller seller, int price, FoodCategory category)
+    public Food(int id, String name, Seller seller, int price, FoodCategory category)
     {
-        
-        /**
-         * Variabel Instance untuk parameter
-         */
+        // initialise instance variables
         this.id = id;
         this.name = name;
         this.price = price;
         this.category = category;
         this.seller = seller;
-        // initialise instance variables
-        
     }
-   
-     /**
-     * Getter id for Food
-     * @return id untuk mengecek variabel id ke variabel instance
-     */
-    public int getId()
-    {
-        return id;
-    }
-    
-    /** Getter Name for Food
-    * @return Name untuk mengecek variabel Name ke variabel instance
-    */
-    public String getName()
-    {
-        return name;
-    }
-    
-    /** Getter Seller for Food
-    * @return seller untuk mengecek variabel seller ke variabel instance
-    */
-    public Seller getSeller()
-    {
-        return seller;
-    }
-    
-    /** Getter Price for Food
-    * @return Price untuk mengecek variabel Price ke variabel instance
-    */
-    public int getPrice()
-    {
-        return price;
-    }
-    
-    /** Getter Category for Food
-    * @return Category untuk mengecek variabel Category ke variabel instance
-    */
-    public FoodCategory getCategory()
-    {
-        return category;
-    }
-    
-     /**
-     * Setter id for Food
-     * @param id untuk set ke instance variabel id
-     */
-    public void setId(int id)
-    {
-        this.id =id;
-    }
-    
+
+
+
     /**
-     * Setter Name for Food
-     * @param Name untuk set ke instance variabel Name
+     * Use this method to get the seller of a food. The data will be returned as an object of Seller class
+     * @return Seller
      */
-    public void setName(String name)
-    {
+    public Seller getSeller(){
+        return this.seller;
+    }
+
+
+
+    /**
+     * Use this method to get id of the food.
+     * @return int
+     */
+    public int getId(){
+        return this.id;
+    }
+
+
+
+    /**
+     * Use this method to get the name of the get the name of the food.
+     * @return String
+     */
+    public String getName(){
+        return this.name;
+    }
+
+
+
+    /** int
+     * Use this method to get the price of a food
+     * @return int
+     */
+    public int getPrice(){
+        return this.price;
+    }
+
+
+
+    /**
+     * Use this method to get the category of certain food.
+     * @return String
+     */
+    public FoodCategory getCategory(){
+        return this.category;
+    }
+
+
+
+    /**
+     * Use this method to set the id of a food.
+     * @param id
+     */
+    public void setId(int id){
+        this.id = id;
+    }
+
+
+    /**
+     * Use this method to set the name of a food
+     * @param name
+     */
+    public void setName(String name){
         this.name = name;
     }
-    
+
+
     /**
-     * Setter seller for food
-     * @param seller untuk set ke instance variabel seller
+     * Use this method to set the price
+     * @param price
      */
-    public void setSeller(Seller seller)
-    {
-        this.seller = seller;
-    }
-    
-    /**
-     * Setter Price for food
-     * @param Price untuk set ke instance variabel Price
-     */
-    public void setPrice(String setPrice)
-    {
+    public void setPrice(int price) {
         this.price = price;
     }
-    
+
+
     /**
-     * Setter Category for food
-     * @param Category untuk set ke instance variabel Category
+     * Use this method to set the category of a food
+     * @param category
      */
-    public void setCategory(FoodCategory category)
-    {
+    public void setCategory(FoodCategory category) {
         this.category = category;
     }
-    
-     public String toString()
-    {
-        return "=========Food========\n" +
-        "Id : " + getId() + "\n" +
-        "Nama : " + getName() + "\n"+
-        "Seller : " + getSeller() + "\n"+
-        "City : "  +  getSeller().getLocation().getCity() + "\n"+
-        "Price : " +  getPrice() + "\n"+
-        "Category : " + getCategory() + "\n"; 
-    }
-    
+
+
     /**
-     * Print Data (Untuk No 1 Post Test)
+     * Use this method to the seller by passing the seller of object to parameter of the method.
+     * @param seller
      */
-    public void printData()
-    {
-        System.out.println("=========FOOD==========");
-        System.out.println("ID : 1 "+ getId());
-        System.out.println("Name : " + getName());
-        System.out.println("Seller : " + getSeller().getName());
-        System.out.println("City : " + getSeller().getLocation().getCity());
-        System.out.println("Price : " + getPrice());
-        System.out.println("Category : " +getCategory());
-        
-        
+    public void setSeller(Seller seller) {
+        this.seller = seller;
     }
-    
-    
+
+    public String toString(){
+
+        return "Id: " + id + "\n" +
+                "Nama: " + name + "\n" +
+                "Seller: " + seller.getName() + "\n" +
+                "City: " + seller.getLocation().getCity() + "\n" +
+                "Price: " + price + "\n" +
+                "Category: " + category.toString();
+    }
+
+
 }

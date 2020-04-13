@@ -1,3 +1,10 @@
+/**
+ * Write a description of class PromoCodeAlreadyExistsException here.
+ *
+ * @author Fahri Alamsyah
+ * @version 09 - 04 - 2020
+ */
+
 public class PromoCodeAlreadyExistsException extends Exception{
     private Promo promo_error;
 

@@ -35,7 +35,7 @@ public class Seller
      * @param phoneNumber untuk menginisialisasikan input phoneNumber baru
      * @param location menginisialisasikan input total location baru
      */
-    public Seller(int id, String name, String email, String phonenumber, Location location)
+    public Seller(int id, String name, String email, String phoneNumber, Location location)
     {
         /**
          * Variabel Instance

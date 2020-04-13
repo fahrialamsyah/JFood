@@ -2,8 +2,8 @@
 /**
  * Write a description of class Promo here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Fahri Alamsyah
+ * @version 09-04-2020
  */
 public class Promo
 {

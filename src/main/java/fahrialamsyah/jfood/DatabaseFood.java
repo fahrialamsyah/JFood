@@ -1,11 +1,12 @@
 package fahrialamsyah.jfood;
+
 import java.util.ArrayList;
 
 /**
  * Write a description of class Food here.
  *
  * @author Fahri Alamsyah
- * @version 09-04-2020
+ * @version 16-04-2020
  */
 public class DatabaseFood
 {

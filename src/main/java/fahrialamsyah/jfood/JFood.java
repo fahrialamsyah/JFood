@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * Write a description of class DatabaseCustomer here.
  *
  * @author Fahri Alamsyah
- * @version 13 - 04 -2020
+ * @version 16 - 04 -2020
  */
 
 
@@ -30,7 +30,8 @@ public class JFood {
         Location location = new Location("Depok", "Jawa Barat", "Warung");
 
         DatabaseSeller.addSeller(new Seller(DatabaseSeller.getLastId() + 1, "Fahri", "FahriAlamsyah231@gmail.com", "0821212121", location));
-
+        DatabaseSeller.addSeller(new Seller(DatabaseSeller.getLastId() + 1, "Faerrens", "Faerrens04@gmail.com", "08122334567", location));
+        DatabaseSeller.addSeller(new Seller(DatabaseSeller.getLastId() + 1, "Alamsyah", "FahriAlamsyahh2131@gmail.com", "082121233", location));
         try {
             DatabaseCustomer.addCustomer(new Customer(DatabaseCustomer.getLastId() + 1, "fahrialamsyah", "fahrialamsyah@gmail.com", "Fahri1234"));
             DatabaseCustomer.addCustomer(new Customer(DatabaseCustomer.getLastId() + 1, "FahriB", "fahriB@gmail.com", "Faerren123"));
@@ -50,6 +51,10 @@ public class JFood {
         try {
             DatabaseFood.addFood(new Food(DatabaseFood.getLastId() + 1, "Nasi Goreng Golden Lamian", DatabaseSeller.getSellerById(DatabaseSeller.getLastId()), 20000, FoodCategory.Rice));
             DatabaseFood.addFood(new Food(DatabaseFood.getLastId() + 1, "Sushi", DatabaseSeller.getSellerById(DatabaseSeller.getLastId()), 20000, FoodCategory.Japanese));
+            DatabaseFood.addFood(new Food(DatabaseFood.getLastId() + 1, "Krispyy Donuts", DatabaseSeller.getSellerById(DatabaseSeller.getLastId()), 10000, FoodCategory.Japanese));
+            DatabaseFood.addFood(new Food(DatabaseFood.getLastId() + 1, "Nasi Goreng Sapi", DatabaseSeller.getSellerById(DatabaseSeller.getLastId()), 15000, FoodCategory.Rice));
+            DatabaseFood.addFood(new Food(DatabaseFood.getLastId() + 1, "Gyoza", DatabaseSeller.getSellerById(DatabaseSeller.getLastId()), 10800, FoodCategory.Japanese));
+            DatabaseFood.addFood(new Food(DatabaseFood.getLastId() + 1, "Nasi goreng Kambing Kebon Nanas", DatabaseSeller.getSellerById(DatabaseSeller.getLastId()), 12000, FoodCategory.Rice));
         } catch (SellerNotFoundException e) {
             System.out.println(e.getMessage());
         }

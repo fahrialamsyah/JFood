@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 public class CustomerController {
 
     @RequestMapping("")
-    public String indexPage(@RequestParam(value="name", defaultValue="world") String name) {
+    public String indexPage(@RequestParam(value = "name", defaultValue = "world") String name) {
         return "Hello " + name;
     }
 
@@ -24,8 +24,30 @@ public class CustomerController {
         return customer;
     }
 
-    @RequestMapping(value = "", method = RequestMethod.POST)
-    public Customer addCustomer(@RequestParam(value="name") String name,
+    @RequestMapping(value = "/customer/login", method = RequestMethod.POST)
+    public Customer loginCustomer(@RequestParam(value = "email") String email,
+                                  @RequestParam(value = "password") String password) {
+        {
+        Customer customer = null;
+        customer = DatabaseCustomer.getCustomerLogin(email, password);
+        return customer;
+    }
+
+}
+    @RequestMapping("/id")
+    public Food getFoodById(@PathVariable int id) {
+        Food food = null;
+        try {
+            food = DatabaseFood.getFoodById(id);
+        } catch (FoodNotFoundException e) {
+            e.getMessage();
+            return null;
+        }
+            return food;
+    }
+
+    @RequestMapping(value = "/customer/register", method = RequestMethod.POST)
+    public Customer registerCustomer(@RequestParam(value="name") String name,
                                 @RequestParam(value="email") String email,
                                 @RequestParam(value="password") String password)
     {

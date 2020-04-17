@@ -2,9 +2,14 @@ package fahrialamsyah.jfood;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Calendar;
+
 
 /**
- * Write a description of class DatabaseCustomer here.
+ * Write a description of class JFood here.
  *
  * @author Fahri Alamsyah
  * @version 16 - 04 -2020
@@ -28,10 +33,12 @@ public class JFood {
     public static void main(String[] args) {
         SpringApplication.run(JFood.class, args);
         Location location = new Location("Depok", "Jawa Barat", "Warung");
+        Location location2 = new Location("Jakarta", "DKI Jakarta", "Rumah");
+        Location location3 = new Location("Metro", "Lampung", "Rumah Nenek");
 
         DatabaseSeller.addSeller(new Seller(DatabaseSeller.getLastId() + 1, "Fahri", "FahriAlamsyah231@gmail.com", "0821212121", location));
-        DatabaseSeller.addSeller(new Seller(DatabaseSeller.getLastId() + 1, "Faerrens", "Faerrens04@gmail.com", "08122334567", location));
-        DatabaseSeller.addSeller(new Seller(DatabaseSeller.getLastId() + 1, "Alamsyah", "FahriAlamsyahh2131@gmail.com", "082121233", location));
+        DatabaseSeller.addSeller(new Seller(DatabaseSeller.getLastId() + 1, "Faerrens", "Faerrens04@gmail.com", "08122334567", location2));
+        DatabaseSeller.addSeller(new Seller(DatabaseSeller.getLastId() + 1, "Alamsyah", "FahriAlamsyahh2131@gmail.com", "082121233", location3));
         try {
             DatabaseCustomer.addCustomer(new Customer(DatabaseCustomer.getLastId() + 1, "fahrialamsyah", "fahrialamsyah@gmail.com", "Fahri1234"));
             DatabaseCustomer.addCustomer(new Customer(DatabaseCustomer.getLastId() + 1, "FahriB", "fahriB@gmail.com", "Faerren123"));
@@ -101,6 +108,7 @@ public class JFood {
         System.out.println("=========Customer===========");
         for (Customer customer : DatabaseCustomer.getCustomerDatabase()) {
             System.out.println(customer.getName());
+            System.out.println(customer.getJoinDate());
         }
 
         System.out.println("=========Promo===========");

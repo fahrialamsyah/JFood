@@ -1,39 +1,31 @@
 package fahrialamsyah.jfood;
+
 import java.util.ArrayList;
 
 /**
  * Write a description of class DatabaseCustomer here.
  *
  * @author Fahri Alamsyah
- * @version 16 - 04 - 2020
+ * @version 17 - 04 - 2020
  */
-public class DatabaseCustomer {
+public class DatabaseCustomer
+{
     // instance variables - replace the example below with your own
     private static ArrayList<Customer> CUSTOMER_DATABASE = new ArrayList<>();
     private static int lastId = 0;
-
     /**
      * Constructor for objects of class DatabaseCustomer
      */
-    public DatabaseCustomer() {
+    public DatabaseCustomer()
+    {
         // initialise instance variables
 
     }
 
     /**
      * An example of a method - replace this comment with your own
+     *
      */
-    public static Customer getCustomerLogin(String email, String password){
-        for(Customer customer : CUSTOMER_DATABASE){
-            if(customer.getEmail()== email && customer.getPassword()==password){
-                return customer;
-            }
-        }
-        return null;
-
-    }
-
-
     public static boolean addCustomer(Customer customer) throws EmailAlreadyExistsException{
         boolean sameEmailBuff = false;
         for (Customer buff: CUSTOMER_DATABASE) {
@@ -78,6 +70,16 @@ public class DatabaseCustomer {
             }
         }
         throw new CustomerNotFoundException(id);
+
+    }
+
+    public static Customer CustomerLogin(String email, String password) {
+        for (Customer customer: CUSTOMER_DATABASE) {
+            if (customer.getEmail().equals(email) && customer.getPassword().equals(password)) {
+                return customer;
+            }
+        }
+        return null;
 
     }
 

@@ -19,7 +19,7 @@ public class DatabaseInvoice {
         return lastId;
     }
 
-    public static Invoice getInvoiceById(int id) {
+    public static Invoice getInvoiceById(int id) throws InvoiceNotFoundException {
         for (Invoice invoice: DATABASE_INVOICE) {
             if (invoice.getId() == id) {
                 return invoice;

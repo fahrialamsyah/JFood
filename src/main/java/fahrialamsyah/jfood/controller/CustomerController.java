@@ -3,47 +3,75 @@ package fahrialamsyah.jfood.controller;
 import fahrialamsyah.jfood.*;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.Email;
+/**
+ * <h1>Customer Controller<h1>
+ * Kelas ini berfungsi untuk menjadi wadah untuk Customer Controller API android
+ *
+ * @author Fahri Alamsyah
+ * @version 30 - 05 - 2020
+ *
+ */
 @RequestMapping("/customer")
+@CrossOrigin(origins = " ", allowedHeaders = "*")
 @RestController
-public class CustomerController {
+public class CustomerController
+{
 
     @RequestMapping("")
-    public String indexPage(@RequestParam(value="name", defaultValue="world") String name) {
+    public String indexPage(@RequestParam(value="name", defaultValue="world") String name)
+    {
         return "Hello " + name;
     }
 
-
-    @RequestMapping("/{id}")
-    public Customer getCustomerById(@PathVariable int id) {
+    @RequestMapping(value="/{id}", method = RequestMethod.GET)
+    public Customer getCustomerById(@PathVariable int id)
+    {
         Customer customer = null;
-        try {
-            customer = DatabaseCustomer.getCustomerById(id);
-        } catch (CustomerNotFoundException e) {
-            e.getMessage();
-            return null;
+        try
+        {
+            customer = DatabaseCustomerPostgreBaru.getCustomer(id);
+        }
+        catch (Exception e)
+        {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
         }
         return customer;
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public Customer registerCustomer(@RequestParam(value="name") String name,
-                                     @RequestParam(value="email") String email,
-                                     @RequestParam(value="password") String password)
+    public Customer register(@RequestParam(value="name") String name,
+                             @RequestParam(value="email") String email,
+                             @RequestParam(value="password") String password)
     {
-        Customer customer = new Customer(DatabaseCustomer.getLastId()+1, name, email, password);
-        try {
-            DatabaseCustomer.addCustomer(customer);
-        } catch (EmailAlreadyExistsException e) {
-            e.getMessage();
+        try
+        {
+            return DatabaseCustomerPostgreBaru.insertCustomer(DatabaseCustomerPostgreBaru.getLastCustomerId()+1, name,  email,  password);
+        }
+        catch (Exception e)
+        {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
             return null;
         }
-        return customer;
+
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public Customer loginCustomer(@RequestParam(value = "email") String email,
-                                  @RequestParam(value = "password") String password) {
+    public Customer loginCustomer(@RequestParam(value="email") String email,
+                                  @RequestParam(value="password") String password)
+    {
+        Customer customer = null;
 
-        return DatabaseCustomer.CustomerLogin(email, password);
+        try
+        {
+            customer = DatabaseCustomerPostgreBaru.getLogin(email, password);
+        }
+        catch (Exception e)
+        {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            return null;
+        }
+        return customer;
+
     }
 }

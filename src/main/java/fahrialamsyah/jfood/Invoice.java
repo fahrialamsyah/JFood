@@ -1,125 +1,155 @@
-package fahrialamsyah.jfood;
-import java.util.*;
-/**
- * Write a description of class Food here.
+package fahrialamsyah.jfood; /**
+ * <h1>Invoice<h1>
+ * Kelas ini berfungsi untuk mendapatkan dan memberikan nilai pada obyek invoice
+ * dengan memanfaatkan method constructor, mutator, dan accessor
  *
  * @author Fahri Alamsyah
- * @version 09 - 04 - 2020
+ * @version 27-February-2020
+ *
  */
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.lang.*;
+
 public abstract class Invoice
 {
-    // instance variables - replace the example below with your own
+    //Atribut yang digunakan pada kelas ini dengan access modifier private
     private int id;
-    private ArrayList<Food> food;
+    ArrayList<Food> foods = new ArrayList<Food>();
     private Calendar date;
     protected int totalPrice;
     private Customer customer;
     private InvoiceStatus invoiceStatus;
-
     /**
-     * Constructor for objects of class Invoice
+     * Sebuah constructor pada kelas awal yang akan memberikan nilai ketika
+     * method ini dipanggil dengan menginisiasikan nilai awal sesuai dengan
+     * parameternya
+     *
+     * @param id memberi nilai berupa id dengan tipe data int
+     * @param idFood memberi nilai berupa id makanan dengan tipe data int
+     * @param date memberi nilai berupa harga dengan tipe data string
+     * @param totalProce memberi nilai berupa kategori dengan tipe data int
+     * @param <customer memasukkan obyek customer
      */
-    public Invoice(int id, ArrayList<Food> food, Customer customer)
+    public Invoice(int id, ArrayList<Food> foods,int totalPrice, Customer customer)
     {
-        // initialise instance variables
-        Calendar calendar = Calendar.getInstance();
-
+        //Kata kunci this digunakan untuk mereferensikan obyek saat ini yaitu invoice
         this.id = id;
-        this.food = food;
+        this.foods = foods;
+        this.totalPrice = totalPrice;
         this.customer = customer;
-        this.date = new GregorianCalendar(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+        this.date = Calendar.getInstance();
         this.invoiceStatus = InvoiceStatus.Ongoing;
     }
 
+
+
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @return id return the id of the invoice
+     * Method getID merupakan method getter untuk variabel id
+     * @return <code>int<code> akan mengembalikan nilai id ketika method ini
+     * dipanggil
      */
-    public int getId(){
+    public int getId (){
         return id;
     }
 
-
-    public ArrayList<Food> getFoods() {
-        return food;
+    /**
+     * Method getIdFood merupakan method getter untuk variabel idFood
+     * @return <code>int<code> akan mengembalikan nilai idFood ketika method ini
+     * dipanggil
+     */
+    public ArrayList<Food> getFood (){
+        return foods;
     }
 
-
     /**
-     * @return String
+     * Method getDate merupakan method getter untuk variabel date
+     * @return <code>String<code> akan mengembalikan nilai date ketika method ini
+     * dipanggil
      */
     public Calendar getDate(){
         return date;
     }
 
-
     /**
-     * @return int
+     * Method getTotalProve merupakan method getter untuk variabel totalPrice
+     * @return <code>int<code> akan mengembalikan nilai totalPrice ketika method ini
+     * dipanggil
      */
     public int getTotalPrice(){
         return totalPrice;
     }
 
-
     /**
-     * @return Customer
+     * Method getCustomer merupakan method getter untuk obyek customer
+     * @return <code>Seller<code> akan mengembalikan nilai customer ketika method ini
+     * dipanggil
      */
     public Customer getCustomer(){
         return customer;
     }
 
+    /**
+     *
+     */
     public abstract PaymentType getPaymentType();
 
-    public InvoiceStatus getInvoiceStatus() {
+    public InvoiceStatus getStatus() {
         return invoiceStatus;
     }
 
-
-    public void setInvoiceStatus(InvoiceStatus invoiceStatus) {
-        this.invoiceStatus = invoiceStatus;
-    }
-
     /**
-     * @param customer
-     */
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-
-    /**
-     * @param id
+     * Method setID merupakan method setter untuk variabel id
+     * @return tidak ada
      */
     public void setId(int id){
         this.id = id;
     }
 
-
-    public void setFood (ArrayList<Food> food) {
-        this.food = food;
+    /**
+     * Method setIdFood merupakan method setter untuk variabel idFood
+     * @return tidak ada
+     */
+    public void setFood(ArrayList<Food> foods){
+        this.foods = foods;
     }
 
-
     /**
-     * @param date
+     * Method setDate merupakan method setter untuk variabel date
+     * @return tidak ada
      */
-    public void setDate(Calendar date){
+    public void setDate(Calendar date) {
         this.date = date;
     }
 
-    public void setDate(int year, int month, int dayOfMonth){
-        this.date = new GregorianCalendar(year, month, dayOfMonth);
+    public void setDate(int year, int month, int dayOfMonth) {
+        this.date = new GregorianCalendar(year, month-1, dayOfMonth);
     }
 
     /**
+     * Method setTotalPrice merupakan method setter untuk variabel totalPrice
+     * @return tidak ada
      */
-    public abstract void setTotalPrice();
+    //public abstract void setTotalPrice();
 
+    /**
+     * Method setLocation merupakan method setter untuk obyek location
+     * @return tidak ada
+     */
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public void setInvoiceStatus(InvoiceStatus status) {
+        this.invoiceStatus = status;
+    }
+
+    /**
+     * Method ini akan mencetak semua variabel yang telah diset oleh variable setter
+     */
     public abstract String toString();
-
-
-
 
 
 }

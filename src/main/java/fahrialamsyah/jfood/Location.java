@@ -1,87 +1,98 @@
 package fahrialamsyah.jfood;
 /**
- * Write a description of class Food here.
+ * <h1>Location<h1>
+ * Kelas ini berfungsi untuk mendapatkan dan memberikan nilai pada obyek Location
+ * dengan memanfaatkan method constructor, mutator, dan accessor
  *
  * @author Fahri Alamsyah
- * @version 09-04-2020
+ * @version 27-February-2020
+ *
  */
+
 public class Location
 {
-    // instance variables - replace the example below with your own
+    //Atribut yang digunakan pada kelas ini dengan access modifier private
     private String province;
     private String description;
     private String city;
 
     /**
-     * Constructor for objects of class Location
+     * Sebuah constructor pada kelas awal yang akan memberikan nilai ketika
+     * method ini dipanggil dengan menginisiasikan nilai awal sesuai dengan
+     * parameternya
+     *
+     * @param province memberi nilai berupa nama provinsi dengan tipe data string
+     * @param description memberi nilai berupa deskripsi dengan tipe data string
+     * @param city memberi nilai berupa nama kota dengan tipe data string
      */
-    public Location(String city, String province, String description)
+    public Location(String province, String description, String city)
     {
-        // initialise instance variables
-        this.city = city;
+        //Kata kunci this digunakan untuk mereferensikan obyek saat ini yaitu location
         this.province = province;
         this.description = description;
-    }
-
-
-    /**
-     * @return String
-     */
-    public String getProvince() {
-        return this.province;
-    }
-
-
-    /**
-     * @return String
-     */
-    public String getCity() {
-        return this.city;
-    }
-
-
-    /**
-     * @return String
-     */
-    public String getDescription() {
-        return this.description;
-    }
-
-
-    /**
-     * @param city
-     */
-    public void setCity(String city){
         this.city = city;
     }
 
-
     /**
-     * @param description
+     * Method getProvince merupakan method getter untuk variabel province
+     * @return <code>String<code> akan mengembalikan nilai province ketika method ini
+     * dipanggil
      */
-    public void setDescription(String description) {
-        this.description = description;
+    public String getProvince()
+    {
+        return province;
     }
 
-
+    /**
+     * Method getDescription merupakan method getter untuk variabel description
+     * @return <code>String<code> akan mengembalikan nilai description ketika method ini
+     * dipanggil
+     */
+    public String getDescription()
+    {
+        return description;
+    }
 
     /**
-     * @param province
+     * Method getCity merupakan method getter untuk variabel Name
+     * @return <code>String<code> akan mengembalikan nilai Name ketika method ini
+     * dipanggil
      */
-    public void setProvince(String province) {
+    public String getCity()
+    {
+        return city;
+    }
+
+    /**
+     * Method setProvince merupakan method setter untuk variabel province
+     * @param province untuk mengisi data berupa tipe data String ke dalam variabel province
+     * @return tidak ada
+     */
+    public void setProvince(String province){
         this.province = province;
     }
 
     /**
-     * Print the data inside this object
+     * Method setDescription merupakan method setter untuk variabel description
+     * @param description untuk mengisi data berupa tipe data String ke dalam variabel description
+     * @return tidak ada
      */
+    public void setDescription(String description){
+        this.description = description;
+    }
+
+    /**
+     * Method setCity merupakan method setter untuk variabel city
+     * @param city untuk mengisi data berupa tipe data String ke dalam variabel city
+     * @return tidak ada
+     */
+    public void setCity(String city)
+    {
+        this.city = city;
+    }
+
     public String toString(){
-
-        return "Province: " + province + "\n" +
-                "City: " + city + "\n" +
-                "Description: " + description + "\n";
+        return "Province= " +province+ "\nCity= " +city+ "\nDescription= " +description;
     }
-
-
-
 }
+

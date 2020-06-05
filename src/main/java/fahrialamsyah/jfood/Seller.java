@@ -1,128 +1,144 @@
 package fahrialamsyah.jfood;
+
 /**
- * Write a description of class Food here.
+ * <h1>Seller<h1>
+ * Kelas ini berfungsi untuk mendapatkan dan memberikan nilai pada obyek seller
+ * dengan memanfaatkan method constructor, mutator, dan accessor
  *
  * @author Fahri Alamsyah
- * @version 13-04-2020
+ * @version 27-February-2020
+ *
  */
 public class Seller
 {
-    // instance variables - replace the example below with your own
+    //Atribut yang digunakan pada kelas ini dengan access modifier private
     private int id;
     private String name;
     private String email;
     private String phoneNumber;
     private Location location;
+
     /**
-     * Constructor for objects of class Seller
+     * Sebuah constructor pada kelas awal yang akan memberikan nilai ketika
+     * method ini dipanggil dengan menginisiasikan nilai awal sesuai dengan
+     * parameternya
+     *
+     * @param id memberi nilai berupa id dengan tipe data int
+     * @param name memberi nilai berupa nama dengan tipe data string
+     * @param email memberi nilai berupa alamat email dengan tipe data string
+     * @param phoneNumber memberi nilai berupa nomor telepon dengan tipe data string
+     * @param location memasukkan obyek location
      */
     public Seller(int id, String name, String email, String phoneNumber, Location location)
     {
-        // initialise instance variables
+        //Kata kunci this digunakan untuk mereferensikan obyek saat ini yaitu Seller
         this.id = id;
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.location = location;
     }
-
-
     /**
-     * @return Location
+     * Method getID merupakan method getter untuk variabel id
+     * @return <code>int<code> akan mengembalikan nilai id ketika method ini
+     * dipanggil
      */
-    // Get the location of the seller
-    public Location getLocation(){
-        return this.location;
+    public int getId() {
+        return id;
     }
 
-
     /**
-     * @return int
+     * Method getName merupakan method getter untuk variabel Name
+     * @return <code>String<code> akan mengembalikan nilai Name ketika method ini
+     * dipanggil
      */
-    // Get the id of the seller
-    public int getId(){
-        return this.id;
+    public String getName() {
+        return name;
     }
 
-
     /**
-     * @return String
+     * Method getEmail merupakan method getter untuk variabel email
+     * @return <code>String<code> akan mengembalikan nilai email ketika method ini
+     * dipanggil
      */
-    // Get the name of the seller
-    public String getName(){
-        return this.name;
+    public String getEmail (){
+        return email;
     }
 
-
     /**
-     * @return String
+     * Method getPhoneNumber merupakan method getter untuk variabel phoneNumber
+     * @return <code>String<code> akan mengembalikan nilai phoneNumber ketika method ini
+     * dipanggil
      */
-    // Get the email of the seller
-    public String getEmail(){
-        return this.email;
-    }
-
-
-    /**
-     * @return String
-     */
-    // Get the phone number of the seller
     public String getPhoneNumber(){
-        return this.phoneNumber;
+        return phoneNumber;
     }
 
+    /**
+     * Method getLocation merupakan method getter untuk obyek location
+     * @return <code>Seller<code> akan mengembalikan nilai location ketika method ini
+     * dipanggil
+     */
+    public Location getLocation(){
+        return location;
+    }
 
     /**
-     * @param id
+     * Method setID merupakan method setter untuk variabel id
+     * @param id untuk mengisi data berupa tipe data int ke dalam variabel id
+     * @return tidak ada
      */
-    // Set the id of the seller
     public void setId(int id){
         this.id = id;
     }
 
-
     /**
-     * @param name
+     * Method setName merupakan method setter untuk variabel name
+     * @param name untuk mengisi data berupa tipe data String ke dalam variabel name
+     * @return tidak ada
      */
-    // Set the name of the seller
-    public void setName(String name){
+    public void setName (String name) {
         this.name = name;
     }
 
-
     /**
-     * @param email
+     * Method setEmail merupakan method setter untuk variabel email
+     * @param email untuk mengisi data berupa tipe data String ke dalam variabel email
+     * @return tidak ada
      */
-    // Set the email of the seller
-    public void setEmail(String email) {
+    public void setEmail (String email) {
         this.email = email;
     }
 
-
     /**
-     * @param phoneNumber
+     * Method setPhoneNumber merupakan method setter untuk variabel phoneNumber
+     * @param phoneNumber untuk mengisi data berupa tipe data String ke dalam variabel phoneNumber
+     * @return tidak ada
      */
-    // Set the phone number of the seller
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber (String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
-
     /**
-     * @param location
+     * Method setLocation merupakan method setter untuk obyek location
+     * @param location untuk mengisi data berupa tipe data Location ke dalam obyek location
+     * @return tidak ada
      */
-    // Set the location
-    public void setLocation(Location location) {
+    public void setLocation (Location location) {
         this.location = location;
     }
 
-    // Print Data
-    public String toString(){
-
-        return "Id: " + id + "\n" +
-                "Nama: " + name + "\n" +
-                "PhoneNumber: " + phoneNumber + "\n" +
-                "Location: " + location.getCity() + "\n";
+    /**
+     * Method ini digunakan untuk mencetak data berupa nama
+     */
+    public void printData(){
+        System.out.println("Name :" +name);
     }
 
+    public String toString(){
+        return "Id = " +id+ "\nNama= " +name+ "\nPhone Number= " +phoneNumber+ "\nLocation= " +location;
+    }
+
+
 }
+

@@ -1,20 +1,25 @@
 package fahrialamsyah.jfood;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.regex.Pattern;
-import java.util.regex.Matcher;
-import java.text.SimpleDateFormat;
-
 /**
- * Write a description of class Food here.
+ * <h1>Seller<h1>
+ * Kelas ini berfungsi untuk mendapatkan dan memberikan nilai pada obyek seller
+ * dengan memanfaatkan method constructor, mutator, dan accessor
  *
  * @author Fahri Alamsyah
- * @version 17 - 04 - 2020
+ * @version 27-February-2020
+ *
  */
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Customer
 {
-    // instance variables - replace the example below with your own
+    //Atribut yang digunakan pada kelas ini dengan access modifier private
     private int id;
     private String name;
     private String email;
@@ -23,175 +28,188 @@ public class Customer
 
     /**
      * Constructor for objects of class Customer
+     * @param id is to hold value of object's id
+     * @param email is to hold value of object's email
+     * @param password is to hold value of object's password
+     * @param joinDate is to hold value of object's joinDate
      */
-    public Customer(int id, String name, String email, String password, Calendar joinDate)
-    {
-        // initialise instance variables
+    public Customer(int id, String name, String email, String password, Calendar joinDate) {
+        //Kata kunci this digunakan untuk mereferensikan obyek saat ini yaitu customer
         this.id = id;
         this.name = name;
-        setEmail(email);
-        setPassword(password);
+        this.email = email;
+        this.password = password;
         this.joinDate = joinDate;
-    }
-
-    public Customer(int id, String name, String email, String password, int year, int month,
-                    int dayOfMonth)
-    {
-        // initialise instance variables
-        this.id = id;
-        this.name = name;
         setEmail(email);
         setPassword(password);
-        this.joinDate = new GregorianCalendar(year, month, dayOfMonth);
 
     }
 
-    public Customer(int id, String name, String email, String password)
-    {
-        // initialise instance variables
-        Calendar calendar = Calendar.getInstance();
+    public Customer(int id, String name, String email, String password, int year, int month, int dayOfMonth) {
+        //Kata kunci this digunakan untuk mereferensikan obyek saat ini yaitu customer
         this.id = id;
         this.name = name;
+        this.email = email;
+        this.password = password;
+        this.joinDate = new GregorianCalendar(year,month - 1,dayOfMonth);
         setEmail(email);
         setPassword(password);
-        this.joinDate = new GregorianCalendar(calendar.get(Calendar.YEAR),
-                calendar.get(Calendar.MONTH),
-                calendar.get(Calendar.DAY_OF_MONTH));
+    }
+
+    public Customer(int id, String name, String email, String password) {
+        //Kata kunci this digunakan untuk mereferensikan obyek saat ini yaitu customer
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        setEmail(email);
+        setPassword(password);
+        this.joinDate = Calendar.getInstance();
     }
 
     /**
-     * Get the id of the customer
-     *
-     * @return id   the id of the customer
+     * Method getID merupakan method getter untuk variabel id
+     * @return <code>int<code> akan mengembalikan nilai id ketika method ini
+     * dipanggil
      */
     public int getId() {
-
-        return this.id;
+        return id;
     }
 
     /**
-     * <h1> Get the name of the customer<h1>
-     *
-     * @return name Returning the name of the customer as String
+     * Method getName merupakan method getter untuk variabel Name
+     * @return <code>String<code> akan mengembalikan nilai Name ketika method ini
+     * dipanggil
      */
-    public String getName(){
-
-        return this.name;
+    public String getName() {
+        return name;
     }
 
     /**
-     * <h1>Get the email of the customer</h1>
-     *
-     * @return email as String
+     * Method getEmail merupakan method getter untuk variabel email
+     * @return <code>String<code> akan mengembalikan nilai email ketika method ini
+     * dipanggil
      */
-    public String getEmail(){
-
-        return this.email;
+    public String getEmail() {
+        return email;
     }
 
     /**
-     * <h1>Get the recorded of the customer account</h1>
-     *
-     * @return password as String
+     * Method getPassword merupakan method getter untuk variabel password
+     * @return <code>String<code> akan mengembalikan nilai password ketika method ini
+     * dipanggil
      */
-    public String getPassword(){
-
-        return this.password;
+    public String getPassword() {
+        return password;
     }
 
     /**
-     * <h1>Get the recorded date of the customer joined</h1>
-     *
-     * @return joinDate as String
+     * Method getJoinDate merupakan method getter untuk variabel joinDate
+     * @return <code>String<code> akan mengembalikan nilai password ketika method ini
+     * dipanggil
      */
-    public Calendar getJoinDate(){
-
-        return this.joinDate;
+    public Calendar getJoinDate() {
+        return joinDate;
     }
 
     /**
-     * <h1>Set the id of the customer by passing the id of the customer as integer</h1>
-     * @param id as integer
+     * Method setID merupakan method setter untuk variabel id
+     * @param id untuk mengisi data berupa tipe data int ke dalam variabel id
+     * @return tidak ada
      */
     public void setId(int id){
         this.id = id;
     }
 
     /**
-     * <h1> Set the name of the customer by passing the name as string to this method</h1>
-     * <p>
-     * @param name the name of the customer
+     * Method setName merupakan method setter untuk variabel name
+     * @param name untuk mengisi data berupa tipe data String ke dalam variabel name
+     * @return tidak ada
      */
-    public void setName(String name){
+    public void setName (String name) {
         this.name = name;
     }
 
     /**
-     * <h1>Set the email of the customer</h1>
-     * @param email the email of the customer
+     * Method setEmail merupakan method setter untuk variabel email
+     * @param email untuk mengisi data berupa tipe data String ke dalam variabel email
+     * @return tidak ada
      */
-    public void setEmail(String email) {
-        String checkPattern = "^([\\w\\&\\*_~]+\\.{0,1})+@[\\w][\\w\\-]*(\\.[\\w\\-]+)+$";
-
-        Pattern pattern = Pattern.compile(checkPattern);
-        Matcher matcher = pattern.matcher(email);
-        if (matcher.find()) {
+    public void setEmail (String email) {
+        String pattern =  "^[a-zA-Z0-9_+&*-]+(?:\\."+
+                "[a-zA-Z0-9_+&*-]+)*@" +
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                "A-Z]{2,7}$";
+        Pattern p = Pattern.compile(pattern);
+        Matcher m = p.matcher(email);
+        if (m.find()) {
             this.email = email;
         } else {
-            System.out.println("Invalid Email Address\n");
             this.email = "";
         }
     }
 
     /**
-     * <h1>Set the password of the customer account</h1>
-     * <p>
-     * @param password the password of the customer account as String/Text
+     * Method setPassword merupakan method setter untuk variabel password
+     * @param password untuk mengisi data berupa tipe data String ke dalam variabel email
+     * @return tidak ada
      */
-    public void setPassword(String password) {
-        String checkPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,}$";
+    public void setPassword (String password) {
 
-        Pattern pattern = Pattern.compile(checkPattern);
-        Matcher matcher = pattern.matcher(password);
-
-        if (matcher.find()) {
+        String pattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,}$";
+        Pattern p = Pattern.compile(pattern);
+        Matcher m = p.matcher(password);
+        if (m.find()) {
             this.password = password;
         } else {
-            System.out.println("Invalid Password\n");
             this.password = "";
+
         }
+
     }
 
     /**
-     * <h1>
-     * Set the date of the customer joined
-     * </h1>
-     * <p>
-     * @param joinDate Date  as String
-     *
+     * Method setJoinDate merupakan method setter untuk variabel joinDate
+     * @param joinDate untuk mengisi data berupa tipe data String ke dalam variabel joinDate
+     * @return tidak ada
      */
-    public void setJoinDate(Calendar joinDate) {
+    public void setJoinDate (Calendar joinDate) {
         this.joinDate = joinDate;
     }
 
     public void setJoinDate(int year, int month, int dayOfMonth) {
-        this.joinDate = new GregorianCalendar(year, month, dayOfMonth);
+        this.joinDate = new GregorianCalendar(year,month-1,dayOfMonth);
     }
 
-    public String toString(){
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-
-        if (joinDate != null) {
-            return "Id: " + id + "\n" +
-                    "Nama: " + name + "\n" +
-                    "Email: " + email + "\n" +
-                    "Password: " + password + "\n" +
-                    "Join Date: " + formatter.format(joinDate.getTime()) + "\n";
-        } else {
-            return "Id: " + id + "\n" +
-                    "Nama: " + name + "\n" +
-                    "Email: " + email + "\n" +
-                    "Password: " + password + "\n" ;
+    /**
+     * Method ini digunakan untuk mencetak variable name
+     */
+    public String toString()
+    {
+        String string = "";
+        if(joinDate!=null)
+        {
+            Date date = joinDate.getTime();
+            SimpleDateFormat format1 = new SimpleDateFormat("dd-MM-yyyy");
+            String date1 = format1.format(date);
+            string = "Customer:\n"+
+                    "ID = "+id+"\n"+
+                    "Nama = "+name+"\n"+
+                    "Email = "+email+"\n"+
+                    "Password = "+password+"\n"+
+                    "Join Date = "+date1+"\n";
         }
+        else
+        {
+            string = "Customer:\n"+
+                    "ID = "+id+"\n"+
+                    "Nama = "+name+"\n"+
+                    "Email = "+email+"\n"+
+                    "Password = "+password+"\n";
+        }
+        System.out.println(string);
+        return string;
     }
+
+
 }

@@ -1,54 +1,52 @@
 package fahrialamsyah.jfood.controller;
 
-import fahrialamsyah.jfood.DatabaseSeller;
-import fahrialamsyah.jfood.Location;
-import fahrialamsyah.jfood.Seller;
-import fahrialamsyah.jfood.SellerNotFoundException;
+import fahrialamsyah.jfood.*;
 import org.springframework.web.bind.annotation.*;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-
+/**
+ * Write a description of class Seller Controller JFood here.
+ *
+ * @author Fahri Alamsyah
+ * @version 30 - 05 -2020
+ */
 @RequestMapping("/seller")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 public class SellerController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public ArrayList<Seller> getAllSeller(){
-
-        return DatabaseSeller.getSellerDatabase();
+    public ArrayList<Seller> getAllSeller (){
+        ArrayList<Seller> ret;
+        ret = DatabaseSeller.getSellerDatabase();
+        return ret;
     }
 
-    @RequestMapping("{id}")
-    public Seller getSellerById(@PathVariable int id) {
-        Seller seller;
-        try {
+    @RequestMapping(value="{id}", method = RequestMethod.GET)
+    public Seller getSellerById (@PathVariable int id){
+        Seller seller = null;
+        try{
             seller = DatabaseSeller.getSellerById(id);
-            return seller;
-        } catch (SellerNotFoundException e) {
+        }catch (SellerNotFoundException e){
             System.out.println(e.getMessage());
+            return null;
         }
-        return null;
+        return seller;
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST)
-    public Seller addSeller(@RequestParam(value = "name") String name,
-                            @RequestParam(value = "email") String email,
-                            @RequestParam(value = "phoneNumber") String phoneNumber,
-                            @RequestParam(value = "province") String province,
-                            @RequestParam(value = "description") String description,
-                            @RequestParam(value = "city") String city) {
-
-        if (DatabaseSeller.addSeller(new Seller(DatabaseSeller.getLastId() + 1, name, email, phoneNumber, new Location(city, province, description))))
-        {
-            Seller temp;
-            try {
-                temp = DatabaseSeller.getSellerById(DatabaseSeller.getLastId());
-                return temp;
-            } catch (SellerNotFoundException e) {
-                System.out.println(e.getMessage());
-            }
-        }
-        return null;
+    public Seller addSeller (@RequestParam(value = "name")String name,
+                             @RequestParam(value = "email")String email,
+                             @RequestParam(value = "phoneNumber")String phoneNumber,
+                             @RequestParam(value = "province")String province,
+                             @RequestParam(value = "description")String description,
+                             @RequestParam(value = "city")String city)
+    {
+        Location location = new Location(province, description, city);
+        Seller seller = new Seller(DatabaseSeller.getLastId()+1, name, email, phoneNumber, location);
+        DatabaseSeller.addSeller(seller);
+        return seller;
     }
+
+
 }
+
